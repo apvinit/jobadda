@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:jobadda/post_item_tile.dart';
+import 'package:jobadda/post_list_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget getHeader(String title) {
       return InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => PostListPage()));
+        },
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -33,19 +37,19 @@ class HomePage extends StatelessWidget {
             PostItemTile(),
             PostItemTile(),
             PostItemTile(),
-            getHeader('Admit Card'),
+            getHeader('Admit Cards'),
             PostItemTile(),
             PostItemTile(),
             PostItemTile(),
-            getHeader('Latest Job'),
+            getHeader('Latest Jobs'),
             PostItemTile(),
             PostItemTile(),
             PostItemTile(),
-            getHeader('Answer Key'),
+            getHeader('Answer Keys'),
             PostItemTile(),
             PostItemTile(),
             PostItemTile(),
-            getHeader('Admission'),
+            getHeader('Admissions'),
             PostItemTile(),
             PostItemTile(),
             PostItemTile(),

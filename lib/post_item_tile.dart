@@ -4,15 +4,15 @@ import 'package:jobadda/post_detail_page.dart';
 class PostItemTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (_) => PostDetailPage(), fullscreenDialog: true));
-      },
-      child: Card(
-        elevation: 0.0,
+    return Card(
+      elevation: 0.0,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => PostDetailPage(), fullscreenDialog: true));
+        },
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(

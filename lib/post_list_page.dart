@@ -3,6 +3,8 @@ import 'package:jobadda/model/post.dart';
 import 'package:jobadda/post_item_tile.dart';
 import 'package:jobadda/services/database.dart';
 
+import 'posts/post_tile_shimmer.dart';
+
 class PostListPage extends StatelessWidget {
   @required
   final String title;
@@ -47,7 +49,8 @@ class PostListPage extends StatelessWidget {
                     return PostItemTile(post: posts[index]);
                   });
             } else {
-              return CircularProgressIndicator();
+              return ListView.builder(
+                  itemCount: 15, itemBuilder: (_, __) => PostTileShimmer());
             }
           },
         ));

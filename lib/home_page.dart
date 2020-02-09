@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jobadda/model/post.dart';
 import 'package:jobadda/post_item_tile.dart';
 import 'package:jobadda/post_list_page.dart';
+import 'package:jobadda/posts/post_tile_shimmer.dart';
 import 'package:jobadda/services/database.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,8 +12,8 @@ class HomePage extends StatelessWidget {
     Widget getHeader(String title) {
       return InkWell(
         onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => PostListPage(title: title)));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (_) => PostListPage(title: title)));
         },
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -23,7 +24,8 @@ class HomePage extends StatelessWidget {
               Spacer(),
               Text(
                 'See More',
-                style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
               )
             ],
           ),
@@ -42,7 +44,11 @@ class HomePage extends StatelessWidget {
                 children:
                     posts.map((post) => PostItemTile(post: post)).toList());
           } else {
-            return CircularProgressIndicator();
+            return Column(children: <Widget>[
+              PostTileShimmer(),
+              PostTileShimmer(),
+              PostTileShimmer()
+            ]);
           }
         },
       );

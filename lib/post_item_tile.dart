@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jobadda/model/post.dart';
 import 'package:jobadda/post_detail_page.dart';
 
 class PostItemTile extends StatelessWidget {
+  final Post post;
+
+  PostItemTile({this.post});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -16,7 +20,7 @@ class PostItemTile extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
-            'UPSSC 2019 Results',
+            post.title,
             style: TextStyle(fontSize: 16.0),
           ),
         ),

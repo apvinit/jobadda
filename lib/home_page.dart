@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:jobadda/model/post.dart';
 import 'package:jobadda/post_item_tile.dart';
 import 'package:jobadda/post_list_page.dart';
+import 'package:jobadda/services/database.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var db = Database();
     Widget getHeader(String title) {
       return InkWell(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (_) => PostListPage()));
+              context, MaterialPageRoute(builder: (_) => PostListPage(title: title)));
         },
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
             children: <Widget>[
-              Text(title),
+              Text(title.toUpperCase(),
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               Spacer(),
               Text(
                 'See More',
-                style: TextStyle(color: Colors.blue),
+                style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
               )
             ],
           ),
@@ -27,39 +31,41 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget getBody(Future<List<Post>> future) {
+      return FutureBuilder(
+        future: future,
+        builder: (context, AsyncSnapshot<List<Post>> snapshot) {
+          if (snapshot.hasData) {
+            var posts = snapshot.data;
+            return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children:
+                    posts.map((post) => PostItemTile(post: post)).toList());
+          } else {
+            return CircularProgressIndicator();
+          }
+        },
+      );
+    }
+
     return Scaffold(
-      appBar: AppBar(title: Text('Job Adda')),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        appBar: AppBar(title: Text('Job Adda')),
+        body: SingleChildScrollView(
+            child: Column(
           children: <Widget>[
             getHeader('Results'),
-            PostItemTile(),
-            PostItemTile(),
-            PostItemTile(),
+            getBody(db.getRecentResults()),
             getHeader('Admit Cards'),
-            PostItemTile(),
-            PostItemTile(),
-            PostItemTile(),
+            getBody(db.getRecentAdmitCards()),
             getHeader('Latest Jobs'),
-            PostItemTile(),
-            PostItemTile(),
-            PostItemTile(),
+            getBody(db.getRecentJobs()),
             getHeader('Answer Keys'),
-            PostItemTile(),
-            PostItemTile(),
-            PostItemTile(),
+            getBody(db.getRecentAnskwerKeys()),
             getHeader('Admissions'),
-            PostItemTile(),
-            PostItemTile(),
-            PostItemTile(),
+            getBody(db.getRecentAdmissions()),
             getHeader('Syllabus'),
-            PostItemTile(),
-            PostItemTile(),
-            PostItemTile(),
+            getBody(db.getRecentSyllabus()),
           ],
-        ),
-      ),
-    );
+        )));
   }
 }

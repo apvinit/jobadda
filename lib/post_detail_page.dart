@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:jobadda/model/post.dart';
 import 'package:jobadda/posts/post_dates.dart';
 import 'package:jobadda/posts/post_info.dart';
 import 'package:jobadda/posts/post_links.dart';
 
 class PostDetailPage extends StatelessWidget {
+  @required
+  final Post post;
+
+  PostDetailPage({this.post});
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -31,7 +36,11 @@ class PostDetailPage extends StatelessWidget {
           ),
         ),
         body: TabBarView(
-          children: <Widget>[PostInfo(), PostDates(), PostLinks()],
+          children: <Widget>[
+            PostInfo(post: post),
+            PostDates(post: post),
+            PostLinks(post: post)
+          ],
         ),
       ),
     );

@@ -15,7 +15,8 @@ class PostItemTile extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (_) => PostDetailPage(), fullscreenDialog: true));
+                  builder: (_) => PostDetailPage(post: post),
+                  fullscreenDialog: true));
         },
         child: Padding(
           padding: const EdgeInsets.all(16.0),

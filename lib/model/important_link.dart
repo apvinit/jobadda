@@ -12,7 +12,7 @@ class ImportantLink {
     return {'title': title, 'url': url};
   }
 
-  factory ImportantLink.fromMap(Map<String, dynamic> map) {
+  factory ImportantLink.fromMap(Map<dynamic, dynamic> map) {
     return ImportantLink(title: map['title'], url: map['url']);
   }
 

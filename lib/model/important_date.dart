@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 class ImportantDate {
   @required
-  DateTime date;
+  Timestamp date;
   @required
   String title;
 
@@ -12,7 +13,7 @@ class ImportantDate {
     return {'date': date, 'title': title};
   }
 
-  factory ImportantDate.fromMap(Map<String, dynamic> map) {
+  factory ImportantDate.fromMap(Map<dynamic, dynamic> map) {
     return ImportantDate(date: map['date'], title: map['title']);
   }
 

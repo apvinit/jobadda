@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jobadda/model/important_date.dart';
 
 class PostDateTile extends StatelessWidget {
+  final ImportantDate date;
+
+  PostDateTile({this.date});
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -11,14 +16,14 @@ class PostDateTile extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Text(
-              'Title of the date',
+              date.title,
               style: TextStyle(fontSize: 16.0),
             ),
           ),
           Expanded(
             flex: 2,
             child: Text(
-              '23 Dec 18',
+              date.date.toDate().toString(),
               textAlign: TextAlign.right,
               style: TextStyle(fontSize: 16.0),
             ),

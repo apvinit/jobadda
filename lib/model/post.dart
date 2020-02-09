@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'important_date.dart';
 import 'important_link.dart';
 
@@ -7,8 +9,8 @@ class Post {
   String title;
   String name;
   String info;
-  DateTime createdDate;
-  DateTime updatedDate;
+  Timestamp createdDate;
+  Timestamp updatedDate;
   String organisation;
   List<ImportantDate> dates;
   List<ImportantLink> links;
@@ -49,13 +51,22 @@ class Post {
         id: map['id'],
         type: map['type'],
         title: map['title'],
-        name: map['name'],
-        info: map['info'],
         createdDate: map['createdDate'],
         updatedDate: map['updatedDate'],
-        dates: map['dates'],
-        links: map['links'],
+        name: map['name'],
+        info: map['info'],
+        organisation: map['organisation'],
+        dates: datesFromMap(map['dates']),
+        links: linksFromMap(map['links']),
         draft: map['draft']);
+  }
+
+  static List<ImportantLink> linksFromMap(List<dynamic> list) {
+    return list.map((e) => ImportantLink.fromMap(e)).toList();
+  }
+
+  static List<ImportantDate> datesFromMap(List<dynamic> list) {
+    return list.map((e) => ImportantDate.fromMap(e)).toList();
   }
 
   toString() {

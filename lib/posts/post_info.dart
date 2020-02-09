@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:jobadda/model/post.dart';
 
 class PostInfo extends StatelessWidget {
+  @required
+  final Post post;
+
+  PostInfo({this.post});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,7 +18,7 @@ class PostInfo extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
-              'UPPSSC Result 2020 Something',
+              post.title,
               style: TextStyle(fontSize: 18.0),
             ),
           ),
@@ -26,7 +32,7 @@ class PostInfo extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Text(
-                        '23 Dec 2018',
+                        post.createdDate.toDate().toString(),
                         style: TextStyle(fontSize: 18.0),
                       ),
                     ),
@@ -41,7 +47,7 @@ class PostInfo extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Text(
-                        '3 Feb 2018',
+                        post.updatedDate.toDate().toString(),
                         style: TextStyle(fontSize: 18.0),
                       ),
                     ),
@@ -54,7 +60,7 @@ class PostInfo extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
-              'Uttar Pradesh Service Commission',
+              post.organisation,
               style: TextStyle(fontSize: 18.0),
             ),
           ),
@@ -62,7 +68,7 @@ class PostInfo extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
-              'This is the short info for the halloween',
+              post.info,
               style: TextStyle(fontSize: 18.0),
             ),
           ),

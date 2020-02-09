@@ -55,4 +55,52 @@ class Database {
         .getDocuments();
     return _postListFromSnapshot(snapshot);
   }
+
+  Future<List<Post>> getResults() async {
+    var snapshot = await _postsCollection
+        .where('type', isEqualTo: 'Results')
+        .limit(25)
+        .getDocuments();
+    return _postListFromSnapshot(snapshot);
+  }
+
+  Future<List<Post>> getAdmitCards() async {
+    var snapshot = await _postsCollection
+        .where('type', isEqualTo: 'Admit Card')
+        .limit(25)
+        .getDocuments();
+    return _postListFromSnapshot(snapshot);
+  }
+
+  Future<List<Post>> getLatestJobs() async {
+    var snapshot = await _postsCollection
+        .where('type', isEqualTo: 'Latest Job')
+        .limit(25)
+        .getDocuments();
+    return _postListFromSnapshot(snapshot);
+  }
+
+  Future<List<Post>> getAnswerKeys() async {
+    var snapshot = await _postsCollection
+        .where('type', isEqualTo: 'Answer Keys')
+        .limit(25)
+        .getDocuments();
+    return _postListFromSnapshot(snapshot);
+  }
+
+  Future<List<Post>> getAdmissions() async {
+    var snapshot = await _postsCollection
+        .where('type', isEqualTo: 'Admission')
+        .limit(25)
+        .getDocuments();
+    return _postListFromSnapshot(snapshot);
+  }
+
+  Future<List<Post>> getSyllabus() async {
+    var snapshot = await _postsCollection
+        .where('type', isEqualTo: 'Syllabus')
+        .limit(25)
+        .getDocuments();
+    return _postListFromSnapshot(snapshot);
+  }
 }

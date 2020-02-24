@@ -23,6 +23,7 @@ dependencies:
   cloud_firestore: ^0.12.9+5
   shimmer: ^1.0.1
   flutter_custom_tabs: "^0.6.0"
+  intl: ^0.16.1
   flutter:
     sdk: flutter
 

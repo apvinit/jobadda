@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'important_date.dart';
 import 'important_link.dart';
 
@@ -9,8 +7,8 @@ class Post {
   String title;
   String name;
   String info;
-  Timestamp createdDate;
-  Timestamp updatedDate;
+  String createdDate;
+  String updatedDate;
   String organisation;
   List<ImportantDate> dates;
   List<ImportantLink> links;
@@ -51,8 +49,8 @@ class Post {
         id: map['id'],
         type: map['type'],
         title: map['title'],
-        createdDate: map['createdDate'],
-        updatedDate: map['updatedDate'],
+        createdDate: map['createdDate'].toString() ,
+        updatedDate: map['updatedDate'].toString(),
         name: map['name'],
         info: map['info'],
         organisation: map['organisation'],

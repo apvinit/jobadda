@@ -32,7 +32,7 @@ class PostInfo extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Text(
-                        post.createdDate.toDate().toString(),
+                        post.createdDate,
                         style: TextStyle(fontSize: 18.0),
                       ),
                     ),
@@ -47,7 +47,7 @@ class PostInfo extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Text(
-                        post.updatedDate.toDate().toString(),
+                        post.updatedDate,
                         style: TextStyle(fontSize: 18.0),
                       ),
                     ),

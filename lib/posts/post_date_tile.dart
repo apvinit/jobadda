@@ -23,7 +23,7 @@ class PostDateTile extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              date.date.toDate().toString(),
+              date.date,
               textAlign: TextAlign.right,
               style: TextStyle(fontSize: 16.0),
             ),

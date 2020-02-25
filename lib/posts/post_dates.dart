@@ -8,11 +8,17 @@ class PostDates extends StatelessWidget {
   PostDates({this.post});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-        itemCount: post.dates.length,
-        itemBuilder: (context, index) => PostDateTile(date: post.dates[index]),
-      ),
+    if (post.dates.length == 0) {
+      return Container(
+        padding: EdgeInsets.only(top: 150),
+        color: Colors.white,
+        alignment: Alignment.topCenter,
+        child: Image.asset('images/empty.png', height: 200),
+      );
+    }
+    return ListView.builder(
+      itemCount: post.dates.length,
+      itemBuilder: (context, index) => PostDateTile(date: post.dates[index]),
     );
   }
 }

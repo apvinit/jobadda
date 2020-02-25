@@ -12,6 +12,7 @@ class Post {
   String createdDate;
   String updatedDate;
   String organisation;
+  int totalVacancy;
   List<ImportantDate> dates;
   List<ImportantLink> links;
   bool draft;
@@ -25,6 +26,7 @@ class Post {
     this.createdDate,
     this.updatedDate,
     this.organisation,
+    this.totalVacancy,
     this.dates,
     this.links,
     this.draft,
@@ -40,6 +42,7 @@ class Post {
       'createdDate': createdDate,
       'updatedDate': updatedDate,
       'organisation': organisation,
+      'totalVacancy': totalVacancy,
       'dates': dates.map((date) => date.toMap()),
       'links': links.map((link) => link.toMap()),
       'draft': draft
@@ -56,6 +59,7 @@ class Post {
         name: map['name'],
         info: map['info'],
         organisation: map['organisation'],
+        totalVacancy: map['totalVacancy'],
         dates: datesFromMap(map['dates']),
         links: linksFromMap(map['links']),
         draft: map['draft']);

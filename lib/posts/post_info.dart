@@ -18,7 +18,7 @@ class PostInfo extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
-              post.title,
+              post.name,
               style: TextStyle(fontSize: 18.0),
             ),
           ),
@@ -72,6 +72,14 @@ class PostInfo extends StatelessWidget {
               style: TextStyle(fontSize: 18.0),
             ),
           ),
+          Text('Total Post Vacancy', style: TextStyle(color: Theme.of(context).accentColor)),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            child: Text(
+              post.totalVacancy.toString(),
+              style: TextStyle(fontSize: 18.0),
+            ),
+          )
         ],
       ),
     );

@@ -10,6 +10,8 @@ class PostLinkTile extends StatelessWidget {
     return Card(
       elevation: 0.0,
       child: InkWell(
+        splashColor: Theme.of(context).accentColor.withOpacity(0.1),
+        highlightColor: Theme.of(context).accentColor.withOpacity(0.1),
         onTap: () => _launchURL(context, link.url),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -17,7 +19,7 @@ class PostLinkTile extends StatelessWidget {
             link.title,
             style: TextStyle(
                 fontSize: 16.0,
-                color: Colors.blue,
+                color: Theme.of(context).primaryColor,
                 decoration: TextDecoration.underline),
           ),
         ),

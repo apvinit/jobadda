@@ -14,7 +14,7 @@ class PostInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Text('Post', style: TextStyle(color: Colors.blue)),
+          Text('Post', style: TextStyle(color: Theme.of(context).accentColor)),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
@@ -28,7 +28,7 @@ class PostInfo extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('Posted On', style: TextStyle(color: Colors.blue)),
+                    Text('Posted On', style: TextStyle(color: Theme.of(context).accentColor)),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Text(
@@ -43,7 +43,7 @@ class PostInfo extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('Updated On', style: TextStyle(color: Colors.blue)),
+                    Text('Updated On', style: TextStyle(color: Theme.of(context).accentColor)),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Text(
@@ -56,7 +56,7 @@ class PostInfo extends StatelessWidget {
               ),
             ],
           ),
-          Text('Organisation', style: TextStyle(color: Colors.blue)),
+          Text('Organisation', style: TextStyle(color: Theme.of(context).accentColor)),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(
@@ -64,7 +64,7 @@ class PostInfo extends StatelessWidget {
               style: TextStyle(fontSize: 18.0),
             ),
           ),
-          Text('Short Info', style: TextStyle(color: Colors.blue)),
+          Text('Short Info', style: TextStyle(color: Theme.of(context).accentColor)),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(

@@ -25,7 +25,10 @@ class PostDateTile extends StatelessWidget {
             child: Text(
               date.date,
               textAlign: TextAlign.right,
-              style: TextStyle(fontSize: 16.0),
+              style: TextStyle(
+                  fontSize: 16.0,
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold),
             ),
           )
         ]),

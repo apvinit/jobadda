@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
-String dateFromTimestamp(Timestamp timestamp) {
-  var date = timestamp.toDate();
-  return date.toString();
+String formattedDate(String inputString) {
+  var date = DateFormat('dd/MM/yyyy').parse(inputString);
+  return DateFormat.yMMMd().format(date);
 }

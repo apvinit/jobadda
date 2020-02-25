@@ -14,7 +14,7 @@ class ImportantDate {
   }
 
   factory ImportantDate.fromMap(Map<dynamic, dynamic> map) {
-    return ImportantDate(date: dateFromTimestamp(map['date']), title: map['title']);
+    return ImportantDate(date: formattedDate(map['date']), title: map['title']);
   }
 
   @override

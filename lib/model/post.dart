@@ -1,3 +1,5 @@
+import 'package:jobadda/utils/util.dart';
+
 import 'important_date.dart';
 import 'important_link.dart';
 
@@ -49,8 +51,8 @@ class Post {
         id: map['id'],
         type: map['type'],
         title: map['title'],
-        createdDate: map['createdDate'].toString() ,
-        updatedDate: map['updatedDate'].toString(),
+        createdDate: formattedDate(map['createdDate']),
+        updatedDate: formattedDate(map['updatedDate']),
         name: map['name'],
         info: map['info'],
         organisation: map['organisation'],

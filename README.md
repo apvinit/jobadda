@@ -1,6 +1,6 @@
-# jobadda
+# Job Adda
 
-A new Flutter project.
+A portal for information related to the Sarkari results, admissions, admissions and many more.
 
 ## Getting Started
 

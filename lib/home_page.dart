@@ -11,6 +11,8 @@ class HomePage extends StatelessWidget {
     var db = Database();
     Widget getHeader(String title) {
       return InkWell(
+        splashColor: Theme.of(context).accentColor.withOpacity(0.1),
+        highlightColor: Theme.of(context).accentColor.withOpacity(0.1),
         onTap: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (_) => PostListPage(title: title)));
@@ -20,12 +22,15 @@ class HomePage extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Text(title.toUpperCase(),
-                  style: TextStyle(fontWeight: FontWeight.bold)),
+                  style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold)),
               Spacer(),
               Text(
                 'See More',
-                style:
-                    TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Theme.of(context).accentColor,
+                    fontWeight: FontWeight.normal),
               )
             ],
           ),

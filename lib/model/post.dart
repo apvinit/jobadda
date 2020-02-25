@@ -1,3 +1,4 @@
+import 'package:jobadda/model/application_fee.dart';
 import 'package:jobadda/utils/util.dart';
 
 import 'important_date.dart';
@@ -15,6 +16,7 @@ class Post {
   int totalVacancy;
   List<ImportantDate> dates;
   List<ImportantLink> links;
+  List<ApplicationFee> fees;
   bool draft;
 
   Post({
@@ -29,6 +31,7 @@ class Post {
     this.totalVacancy,
     this.dates,
     this.links,
+    this.fees,
     this.draft,
   });
 
@@ -45,6 +48,7 @@ class Post {
       'totalVacancy': totalVacancy,
       'dates': dates.map((date) => date.toMap()),
       'links': links.map((link) => link.toMap()),
+      'fees': fees.map((fee) => fee.toMap()),
       'draft': draft
     };
   }
@@ -62,6 +66,7 @@ class Post {
         totalVacancy: map['totalVacancy'],
         dates: datesFromMap(map['dates']),
         links: linksFromMap(map['links']),
+        fees: feesFromMap(map['fees']),
         draft: map['draft']);
   }
 
@@ -73,7 +78,11 @@ class Post {
     return list.map((e) => ImportantDate.fromMap(e)).toList();
   }
 
+  static List<ApplicationFee> feesFromMap(List<dynamic> list) {
+    return list.map((e) => ApplicationFee.fromMap(e)).toList();
+  }
+
   toString() {
-    return 'Post : id = $id, type = $type, title =  $title, name = $name, info = $info, createdDate = ${createdDate.toString()}, updatedDate = ${updatedDate.toString()}, draft = $draft, links = ${links.toString()}, dates = ${dates.toString()}';
+    return 'Post : id = $id, type = $type, title =  $title, name = $name, info = $info, createdDate = ${createdDate.toString()}, updatedDate = ${updatedDate.toString()}, draft = $draft, links = ${links.toString()}, dates = ${dates.toString()}, fees = ${fees.toString()}';
   }
 }

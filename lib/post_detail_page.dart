@@ -15,31 +15,41 @@ class PostDetailPage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Post Detail',
-          ),
-          bottom: TabBar(
-            tabs: <Widget>[
-              Tooltip(
-                  message: 'Post Info',
-                  preferBelow: false,
-                  child: Tab(icon: Icon(Icons.info))),
-              Tooltip(
-                  preferBelow: false,
-                  message: 'Important Dates',
-                  child: Tab(icon: Icon(Icons.date_range))),
-              Tooltip(
-                  preferBelow: false,
-                  message: 'Important Links',
-                  child: Tab(icon: Icon(Icons.link)))
-            ],
-          ),
+          title: Text('Post Detail'),
         ),
-        body: TabBarView(
+        body: Column(
           children: <Widget>[
-            PostInfo(post: post),
-            PostDates(post: post),
-            PostLinks(post: post)
+            TabBar(
+              tabs: <Widget>[
+                Tooltip(
+                    message: 'Post Info',
+                    preferBelow: false,
+                    child: Tab(
+                        icon: Icon(Icons.info,
+                            color: Theme.of(context).accentColor))),
+                Tooltip(
+                    preferBelow: false,
+                    message: 'Important Dates',
+                    child: Tab(
+                        icon: Icon(Icons.date_range,
+                            color: Theme.of(context).accentColor))),
+                Tooltip(
+                    preferBelow: false,
+                    message: 'Important Links',
+                    child: Tab(
+                        icon: Icon(Icons.link,
+                            color: Theme.of(context).accentColor)))
+              ],
+            ),
+            Expanded(
+              child: TabBarView(
+                children: <Widget>[
+                  PostInfo(post: post),
+                  PostDates(post: post),
+                  PostLinks(post: post)
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -16,7 +16,7 @@ class PostDetailPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          title: Text('Post Detail'),
+          title: Text(post.title),
         ),
         body: Column(
           children: <Widget>[

@@ -11,6 +11,8 @@ class PostItemTile extends StatelessWidget {
     return Card(
       elevation: 0.0,
       child: InkWell(
+        splashColor: Theme.of(context).accentColor.withOpacity(0.1),
+        highlightColor: Theme.of(context).accentColor.withOpacity(0.1),
         onTap: () {
           Navigator.push(
               context,

@@ -15,31 +15,23 @@ class PostDetailPage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           title: Text('Post Detail'),
         ),
         body: Column(
           children: <Widget>[
-            TabBar(
-              tabs: <Widget>[
-                Tooltip(
-                    message: 'Post Info',
-                    preferBelow: false,
-                    child: Tab(
-                        icon: Icon(Icons.info,
-                            color: Theme.of(context).accentColor))),
-                Tooltip(
-                    preferBelow: false,
-                    message: 'Important Dates',
-                    child: Tab(
-                        icon: Icon(Icons.date_range,
-                            color: Theme.of(context).accentColor))),
-                Tooltip(
-                    preferBelow: false,
-                    message: 'Important Links',
-                    child: Tab(
-                        icon: Icon(Icons.link,
-                            color: Theme.of(context).accentColor)))
-              ],
+            Card(
+              margin: EdgeInsets.all(0.0),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+              elevation: 2,
+              child: TabBar(
+                labelColor: Theme.of(context).accentColor,
+                tabs: <Widget>[
+                  Tab(text: 'INFO'),
+                  Tab(text: 'DATES'),
+                  Tab(text: 'LINKS')
+                ],
+              ),
             ),
             Expanded(
               child: TabBarView(

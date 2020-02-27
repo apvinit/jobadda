@@ -12,6 +12,7 @@ class Database {
     var snapshot = await _postsCollection
         .where('type', isEqualTo: 'Results')
         .limit(3)
+        .orderBy('id', descending: true)
         .getDocuments();
     return _postListFromSnapshot(snapshot);
   }
@@ -20,6 +21,7 @@ class Database {
     var snapshot = await _postsCollection
         .where('type', isEqualTo: 'Admit Card')
         .limit(3)
+        .orderBy('id', descending: true)
         .getDocuments();
     return _postListFromSnapshot(snapshot);
   }
@@ -28,6 +30,7 @@ class Database {
     var snapshot = await _postsCollection
         .where('type', isEqualTo: 'Latest Job')
         .limit(3)
+        .orderBy('id', descending: true)
         .getDocuments();
     return _postListFromSnapshot(snapshot);
   }
@@ -36,6 +39,7 @@ class Database {
     var snapshot = await _postsCollection
         .where('type', isEqualTo: 'Answer Keys')
         .limit(3)
+        .orderBy('id', descending: true)
         .getDocuments();
     return _postListFromSnapshot(snapshot);
   }
@@ -44,6 +48,7 @@ class Database {
     var snapshot = await _postsCollection
         .where('type', isEqualTo: 'Admission')
         .limit(3)
+        .orderBy('id', descending: true)
         .getDocuments();
     return _postListFromSnapshot(snapshot);
   }
@@ -52,6 +57,7 @@ class Database {
     var snapshot = await _postsCollection
         .where('type', isEqualTo: 'Syllabus')
         .limit(3)
+        .orderBy('id', descending: true)
         .getDocuments();
     return _postListFromSnapshot(snapshot);
   }

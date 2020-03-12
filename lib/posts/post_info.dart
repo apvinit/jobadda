@@ -9,6 +9,14 @@ class PostInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var headingStyle = TextStyle(
+      fontSize: 18.0,
+      color: Theme.of(context).accentColor,
+      fontWeight: FontWeight.bold,
+    );
+
+    var bodyStyle = TextStyle(fontSize: 18.0);
+
     return SingleChildScrollView(
       child: Container(
         color: Colors.white54,
@@ -18,29 +26,29 @@ class PostInfo extends StatelessWidget {
           children: <Widget>[
             Text('POST',
                 style: TextStyle(
-                    fontSize: 12.0, color: Theme.of(context).accentColor)),
+                    fontSize: 18.0,
+                    color: Theme.of(context).accentColor,
+                    fontWeight: FontWeight.bold)),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
                 post.name,
-                style: TextStyle(fontSize: 20.0),
+                style: bodyStyle,
               ),
             ),
+            Divider(),
             Row(
               children: <Widget>[
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('POSTED ON',
-                          style: TextStyle(
-                              fontSize: 12.0,
-                              color: Theme.of(context).accentColor)),
+                      Text('POSTED ON', style: headingStyle),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
                           post.createdDate,
-                          style: TextStyle(fontSize: 20.0),
+                          style: bodyStyle,
                         ),
                       ),
                     ],
@@ -50,15 +58,12 @@ class PostInfo extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('UPDATED ON',
-                          style: TextStyle(
-                              fontSize: 12.0,
-                              color: Theme.of(context).accentColor)),
+                      Text('UPDATED ON', style: headingStyle),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
                           post.updatedDate,
-                          style: TextStyle(fontSize: 20.0),
+                          style: bodyStyle,
                         ),
                       ),
                     ],
@@ -66,47 +71,42 @@ class PostInfo extends StatelessWidget {
                 ),
               ],
             ),
-            Text('ORGANISATION',
-                style: TextStyle(
-                    fontSize: 12.0, color: Theme.of(context).accentColor)),
+            Divider(),
+            Text('ORGANISATION', style: headingStyle),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
                 post.organisation,
-                style: TextStyle(fontSize: 20.0),
+                style: bodyStyle,
               ),
             ),
-            Text('SHORT INFO',
-                style: TextStyle(
-                    fontSize: 12.0, color: Theme.of(context).accentColor)),
+            Divider(),
+            Text('SHORT INFO', style: headingStyle),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
                 post.info,
-                style: TextStyle(fontSize: 20.0),
+                style: bodyStyle,
               ),
             ),
-            Text('TOTAL POST VACANCY',
-                style: TextStyle(
-                    fontSize: 12.0, color: Theme.of(context).accentColor)),
+            Divider(),
+            Text('TOTAL POST VACANCY', style: headingStyle),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
                 post.totalVacancy != null
                     ? post.totalVacancy.toString()
                     : 'To be updated',
-                style: TextStyle(fontSize: 20.0),
+                style: bodyStyle,
               ),
             ),
-            if (post.fees.length != 0)
-              Text('APPLICATION FEES',
-                  style: TextStyle(
-                      fontSize: 12.0, color: Theme.of(context).accentColor)),
+            if (post.fees.length != 0) Divider(),
+            Text('APPLICATION FEES', style: headingStyle),
             SizedBox(height: 8.0),
             for (var fee in post.fees)
               Text(
                 '${fee.title} - ${fee.amount}',
-                style: TextStyle(fontSize: 20.0),
+                style: bodyStyle,
               ),
             SizedBox(height: 8.0),
           ],

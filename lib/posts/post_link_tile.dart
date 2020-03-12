@@ -19,7 +19,7 @@ class PostLinkTile extends StatelessWidget {
             link.title,
             style: TextStyle(
                 fontSize: 16.0,
-                color: Theme.of(context).primaryColor,
+                color: Colors.blue,
                 decoration: TextDecoration.underline),
           ),
         ),

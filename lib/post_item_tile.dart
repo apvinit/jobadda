@@ -24,7 +24,11 @@ class PostItemTile extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Text(
             post.title,
-            style: TextStyle(fontSize: 16.0),
+            style: TextStyle(
+              fontSize: 16.0,
+              color: Colors.blue,
+              decoration: TextDecoration.underline,
+            ),
           ),
         ),
       ),

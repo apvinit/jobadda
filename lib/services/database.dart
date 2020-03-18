@@ -13,7 +13,8 @@ class Database {
         .where('type', isEqualTo: 'Results')
         .limit(3)
         .orderBy('id', descending: true)
-        .snapshots().map(_postListFromSnapshot);
+        .snapshots()
+        .map(_postListFromSnapshot);
   }
 
   Stream<List<Post>> getRecentAdmitCards() {
@@ -21,7 +22,8 @@ class Database {
         .where('type', isEqualTo: 'Admit Card')
         .limit(3)
         .orderBy('id', descending: true)
-        .snapshots().map(_postListFromSnapshot);
+        .snapshots()
+        .map(_postListFromSnapshot);
   }
 
   Stream<List<Post>> getRecentJobs() {
@@ -29,7 +31,8 @@ class Database {
         .where('type', isEqualTo: 'Latest Job')
         .limit(3)
         .orderBy('id', descending: true)
-        .snapshots().map(_postListFromSnapshot);
+        .snapshots()
+        .map(_postListFromSnapshot);
   }
 
   Stream<List<Post>> getRecentAnskwerKeys() {
@@ -37,7 +40,8 @@ class Database {
         .where('type', isEqualTo: 'Answer Keys')
         .limit(3)
         .orderBy('id', descending: true)
-        .snapshots().map(_postListFromSnapshot);
+        .snapshots()
+        .map(_postListFromSnapshot);
   }
 
   Stream<List<Post>> getRecentAdmissions() {
@@ -45,7 +49,8 @@ class Database {
         .where('type', isEqualTo: 'Admission')
         .limit(3)
         .orderBy('id', descending: true)
-        .snapshots().map(_postListFromSnapshot);
+        .snapshots()
+        .map(_postListFromSnapshot);
   }
 
   Stream<List<Post>> getRecentSyllabus() {
@@ -53,7 +58,8 @@ class Database {
         .where('type', isEqualTo: 'Syllabus')
         .limit(3)
         .orderBy('id', descending: true)
-        .snapshots().map(_postListFromSnapshot);
+        .snapshots()
+        .map(_postListFromSnapshot);
   }
 
   Future<List<Post>> getResults() async {
@@ -108,5 +114,14 @@ class Database {
         .orderBy('id', descending: true)
         .getDocuments();
     return _postListFromSnapshot(snapshot);
+  }
+
+  Future<Post> getPostById(String postId) async {
+    if (postId == null) {
+      print('PostId is null');
+      return null;
+    }
+    var postSnapshot = await _postsCollection.document(postId).get();
+    return Post.fromMap(postSnapshot.data);
   }
 }

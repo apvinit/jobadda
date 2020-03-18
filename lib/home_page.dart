@@ -38,9 +38,9 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    Widget getBody(Future<List<Post>> future) {
-      return FutureBuilder(
-        future: future,
+    Widget getBody(Stream<List<Post>> future) {
+      return StreamBuilder(
+        stream: future,
         builder: (context, AsyncSnapshot<List<Post>> snapshot) {
           if (snapshot.hasData) {
             var posts = snapshot.data;

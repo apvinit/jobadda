@@ -8,58 +8,52 @@ class Database {
     return snapshot.documents.map((doc) => Post.fromMap(doc.data)).toList();
   }
 
-  Future<List<Post>> getRecentResults() async {
-    var snapshot = await _postsCollection
+  Stream<List<Post>> getRecentResults() {
+    return _postsCollection
         .where('type', isEqualTo: 'Results')
         .limit(3)
         .orderBy('id', descending: true)
-        .getDocuments();
-    return _postListFromSnapshot(snapshot);
+        .snapshots().map(_postListFromSnapshot);
   }
 
-  Future<List<Post>> getRecentAdmitCards() async {
-    var snapshot = await _postsCollection
+  Stream<List<Post>> getRecentAdmitCards() {
+    return _postsCollection
         .where('type', isEqualTo: 'Admit Card')
         .limit(3)
         .orderBy('id', descending: true)
-        .getDocuments();
-    return _postListFromSnapshot(snapshot);
+        .snapshots().map(_postListFromSnapshot);
   }
 
-  Future<List<Post>> getRecentJobs() async {
-    var snapshot = await _postsCollection
+  Stream<List<Post>> getRecentJobs() {
+    return _postsCollection
         .where('type', isEqualTo: 'Latest Job')
         .limit(3)
         .orderBy('id', descending: true)
-        .getDocuments();
-    return _postListFromSnapshot(snapshot);
+        .snapshots().map(_postListFromSnapshot);
   }
 
-  Future<List<Post>> getRecentAnskwerKeys() async {
-    var snapshot = await _postsCollection
+  Stream<List<Post>> getRecentAnskwerKeys() {
+    return _postsCollection
         .where('type', isEqualTo: 'Answer Keys')
         .limit(3)
         .orderBy('id', descending: true)
-        .getDocuments();
-    return _postListFromSnapshot(snapshot);
+        .snapshots().map(_postListFromSnapshot);
   }
 
-  Future<List<Post>> getRecentAdmissions() async {
-    var snapshot = await _postsCollection
+  Stream<List<Post>> getRecentAdmissions() {
+    return _postsCollection
         .where('type', isEqualTo: 'Admission')
         .limit(3)
         .orderBy('id', descending: true)
-        .getDocuments();
-    return _postListFromSnapshot(snapshot);
+        .snapshots().map(_postListFromSnapshot);
   }
 
-  Future<List<Post>> getRecentSyllabus() async {
-    var snapshot = await _postsCollection
+  Stream<List<Post>> getRecentSyllabus() {
+    return _postsCollection
         .where('type', isEqualTo: 'Syllabus')
         .limit(3)
         .orderBy('id', descending: true)
-        .getDocuments();
-    return _postListFromSnapshot(snapshot);
+        .snapshots().map(_postListFromSnapshot);
   }
 
   Future<List<Post>> getResults() async {

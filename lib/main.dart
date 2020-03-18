@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:jobadda/home_page.dart';
 
-void main() => runApp(MyApp());
+import 'services/push_messaging.dart';
+
+void main() {
+  runApp(MyApp());
+  configureNotification();
+}
 
 class MyApp extends StatelessWidget {
   @override

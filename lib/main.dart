@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         accentColor: Color(0xFFFF735E),
       ),
       home: HomePage(),
+      navigatorKey: navigatorKey,
     );
   }
 }

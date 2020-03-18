@@ -1,4 +1,8 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
+import 'package:jobadda/push_notification_post_detail.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 
 void configureNotification() {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
@@ -10,10 +14,24 @@ void configureNotification() {
     onBackgroundMessage: myBackgroundMessageHandler,
     onLaunch: (Map<String, dynamic> message) async {
       print("onLaunch: $message");
+      final dynamic data = message['data'];
+      final String postId = data['postId'];
+      navigateToPostDetail(postId);
     },
     onResume: (Map<String, dynamic> message) async {
       print("onResume: $message");
+      final dynamic data = message['data'];
+      final String postId = data['postId'];
+      navigateToPostDetail(postId);
     },
+  );
+}
+
+void navigateToPostDetail(String postId) async {
+  navigatorKey.currentState.push(
+    MaterialPageRoute(
+        builder: (_) => PushNotificationPostDetail(postId: postId),
+        fullscreenDialog: true),
   );
 }
 

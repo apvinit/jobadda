@@ -90,25 +90,27 @@ class PostInfo extends StatelessWidget {
               ),
             ),
             Divider(),
-            Text('TOTAL POST VACANCY', style: headingStyle),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                post.totalVacancy != null
-                    ? post.totalVacancy.toString()
-                    : 'To be updated',
-                style: bodyStyle,
+            if (post.totalVacancy != null) ...[
+              Text('TOTAL POST VACANCY', style: headingStyle),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
+                  post.totalVacancy.toString(),
+                  style: bodyStyle,
+                ),
               ),
-            ),
-            if (post.fees.length != 0) Divider(),
-            Text('APPLICATION FEES', style: headingStyle),
-            SizedBox(height: 8.0),
-            for (var fee in post.fees)
-              Text(
-                '${fee.title} - ${fee.amount}',
-                style: bodyStyle,
-              ),
-            SizedBox(height: 8.0),
+              Divider(),
+            ],
+            if (post.fees.length != 0) ...[
+              Text('APPLICATION FEES', style: headingStyle),
+              SizedBox(height: 8.0),
+              for (var fee in post.fees)
+                Text(
+                  '${fee.title} - ${fee.amount}',
+                  style: bodyStyle,
+                ),
+              Divider(),
+            ]
           ],
         ),
       ),

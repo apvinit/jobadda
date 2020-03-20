@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name=".Application"
-        android:label="jobadda"
+        android:label="Sarkari JobAdda"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

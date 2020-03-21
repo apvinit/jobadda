@@ -1,3 +1,4 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:jobadda/ads.dart';
 import 'package:jobadda/model/post.dart';
@@ -6,7 +7,32 @@ import 'package:jobadda/post_list_page.dart';
 import 'package:jobadda/posts/post_tile_shimmer.dart';
 import 'package:jobadda/services/database.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  AdmobInterstitial _interstitial;
+
+  @override
+  void initState() {
+    super.initState();
+    _interstitial = AdmobInterstitial(
+      adUnitId: 'ca-app-pub-3940256099942544/4411468910',
+      listener: (AdmobAdEvent event, Map<String, dynamic> args) {
+        if (event == AdmobAdEvent.closed) _interstitial.load();
+      },
+    );
+    _interstitial.load();
+  }
+
+  @override
+  void dispose() {
+    _interstitial.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var db = Database();
@@ -47,8 +73,12 @@ class HomePage extends StatelessWidget {
             var posts = snapshot.data;
             return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children:
-                    posts.map((post) => PostItemTile(post: post)).toList());
+                children: posts
+                    .map((post) => PostItemTile(
+                          post: post,
+                          interstitial: _interstitial,
+                        ))
+                    .toList());
           } else {
             return Column(children: <Widget>[
               PostTileShimmer(),

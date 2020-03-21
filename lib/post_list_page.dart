@@ -1,5 +1,6 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:jobadda/ads.dart';
 import 'package:jobadda/model/post.dart';
 import 'package:jobadda/post_item_tile.dart';
 import 'package:jobadda/services/database.dart';
@@ -23,7 +24,7 @@ class _PostListPageState extends State<PostListPage> {
   void initState() {
     super.initState();
     _interstitial = AdmobInterstitial(
-      adUnitId: 'ca-app-pub-3940256099942544/4411468910',
+      adUnitId: getInterstitialAdUnit(),
       listener: (AdmobAdEvent event, Map<String, dynamic> args) {
         if (event == AdmobAdEvent.closed) _interstitial.load();
       },

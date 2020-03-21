@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _interstitial = AdmobInterstitial(
-      adUnitId: 'ca-app-pub-3940256099942544/4411468910',
+      adUnitId: getInterstitialAdUnit(),
       listener: (AdmobAdEvent event, Map<String, dynamic> args) {
         if (event == AdmobAdEvent.closed) _interstitial.load();
       },

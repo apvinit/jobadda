@@ -25,6 +25,7 @@ dependencies:
   shimmer: ^1.0.1
   flutter_custom_tabs: "^0.6.0"
   intl: ^0.16.1
+  admob_flutter: ^0.3.4
   flutter:
     sdk: flutter
 

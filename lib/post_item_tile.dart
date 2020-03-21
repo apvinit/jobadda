@@ -1,11 +1,13 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:jobadda/model/post.dart';
 import 'package:jobadda/post_detail_page.dart';
 
 class PostItemTile extends StatelessWidget {
   final Post post;
+  final AdmobInterstitial interstitial;
 
-  PostItemTile({this.post});
+  PostItemTile({this.post, this.interstitial});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -13,12 +15,12 @@ class PostItemTile extends StatelessWidget {
       child: InkWell(
         splashColor: Theme.of(context).accentColor.withOpacity(0.1),
         highlightColor: Theme.of(context).accentColor.withOpacity(0.1),
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => PostDetailPage(post: post),
-                  fullscreenDialog: true));
+        onTap: () async {
+          if (await interstitial?.isLoaded ?? false) {
+            interstitial.show();
+            navigateToPostDetail(context);
+          } else
+            navigateToPostDetail(context);
         },
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -32,6 +34,14 @@ class PostItemTile extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void navigateToPostDetail(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (_) => PostDetailPage(post: post), fullscreenDialog: true),
     );
   }
 }

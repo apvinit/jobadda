@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobadda/ads.dart';
 import 'package:jobadda/model/post.dart';
 import 'package:jobadda/post_item_tile.dart';
 import 'package:jobadda/post_list_page.dart';
@@ -60,23 +61,28 @@ class HomePage extends StatelessWidget {
     }
 
     return Scaffold(
-        appBar: AppBar(title: Text('Job Adda')),
-        body: SingleChildScrollView(
-            child: Column(
+      appBar: AppBar(title: Text('Job Adda')),
+      body: SingleChildScrollView(
+        child: Column(
           children: <Widget>[
             getHeader('Results'),
             getBody(db.getRecentResults()),
             getHeader('Admit Cards'),
             getBody(db.getRecentAdmitCards()),
+            getBannerAd(),
             getHeader('Latest Jobs'),
             getBody(db.getRecentJobs()),
             getHeader('Admissions'),
             getBody(db.getRecentAdmissions()),
+            getBannerAd(),
             getHeader('Answer Keys'),
             getBody(db.getRecentAnskwerKeys()),
             getHeader('Syllabus'),
             getBody(db.getRecentSyllabus()),
+            getBannerAd()
           ],
-        )));
+        ),
+      ),
+    );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'package:jobadda/model/important_link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PostLinkTile extends StatelessWidget {
   final ImportantLink link;
@@ -12,7 +12,7 @@ class PostLinkTile extends StatelessWidget {
       child: InkWell(
         splashColor: Theme.of(context).accentColor.withOpacity(0.1),
         highlightColor: Theme.of(context).accentColor.withOpacity(0.1),
-        onTap: () => _launchURL(context, link.url),
+        onTap: () => _launchURL(link.url),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
@@ -27,27 +27,11 @@ class PostLinkTile extends StatelessWidget {
     );
   }
 
-  void _launchURL(BuildContext context, String url) async {
-    try {
-      await launch(
-        url,
-        option: new CustomTabsOption(
-          toolbarColor: Theme.of(context).primaryColor,
-          enableDefaultShare: false,
-          enableUrlBarHiding: true,
-          showPageTitle: true,
-          animation: new CustomTabsAnimation.slideIn(),
-          extraCustomTabs: <String>[
-            // ref. https://play.google.com/store/apps/details?id=org.mozilla.firefox
-            'org.mozilla.firefox',
-            // ref. https://play.google.com/store/apps/details?id=com.microsoft.emmx
-            'com.microsoft.emmx',
-          ],
-        ),
-      );
-    } catch (e) {
-      // An exception is thrown if browser app is not installed on Android device.
-      debugPrint(e.toString());
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      print('Could not launch $url');
     }
   }
 }

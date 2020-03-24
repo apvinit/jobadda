@@ -1,4 +1,6 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:jobadda/ads.dart';
 import 'package:jobadda/model/post.dart';
 
 class PostInfo extends StatelessWidget {
@@ -81,6 +83,8 @@ class PostInfo extends StatelessWidget {
               ),
             ),
             Divider(),
+            getPostInfoPageBanner(),
+            Divider(),
             Text('SHORT INFO', style: headingStyle),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -114,6 +118,13 @@ class PostInfo extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget getPostInfoPageBanner() {
+    return AdmobBanner(
+      adSize: AdmobBannerSize.LARGE_BANNER,
+      adUnitId: getPostInfoPageBannerAdUnit(),
     );
   }
 }

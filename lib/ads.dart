@@ -43,3 +43,10 @@ String getInterstitialAdUnit() {
   } else
     return "ca-app-pub-3940256099942544/4411468910";
 }
+
+String getPostInfoPageBannerAdUnit() {
+  if (kReleaseMode) {
+    return "ca-app-pub-2582751373548446/4823480210";
+  } else
+    return "ca-app-pub-3940256099942544/6300978111";
+}

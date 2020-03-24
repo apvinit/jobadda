@@ -70,18 +70,18 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            getHeader('Results'),
-            getBody(db.getRecentResults()),
-            getHeader('Admit Cards'),
-            getBody(db.getRecentAdmitCards()),
-            getBannerAd(),
             getHeader('Latest Jobs'),
             getBody(db.getRecentJobs()),
-            getHeader('Admissions'),
-            getBody(db.getRecentAdmissions()),
+            getHeader('Results'),
+            getBody(db.getRecentResults()),
             getBannerAd(),
+            getHeader('Admit Cards'),
+            getBody(db.getRecentAdmitCards()),
             getHeader('Answer Keys'),
             getBody(db.getRecentAnskwerKeys()),
+            getBannerAd(),
+            getHeader('Admissions'),
+            getBody(db.getRecentAdmissions()),
             getHeader('Syllabus'),
             getBody(db.getRecentSyllabus()),
             getBannerAd()

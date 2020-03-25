@@ -66,7 +66,10 @@ class _HomePageState extends State<HomePage> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text('Job Adda')),
+      appBar: AppBar(title: Row(children: <Widget>[
+        Image.asset("images/logo_96x96.png", width: 36),
+        Text('Job Adda')
+      ],)),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

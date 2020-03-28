@@ -5,8 +5,8 @@ import 'package:jobadda/home_page.dart';
 import 'services/push_messaging.dart';
 
 void main() {
-  Admob.initialize("ca-app-pub-2582751373548446~2946588156");
   WidgetsFlutterBinding.ensureInitialized();
+  Admob.initialize("ca-app-pub-2582751373548446~2946588156");
   runApp(MyApp());
   configureNotification();
 }

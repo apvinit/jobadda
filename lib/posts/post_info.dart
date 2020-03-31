@@ -39,6 +39,8 @@ class PostInfo extends StatelessWidget {
               ),
             ),
             Divider(),
+            getPostInfoPageBanner(),
+            Divider(),
             Row(
               children: <Widget>[
                 Expanded(
@@ -83,8 +85,6 @@ class PostInfo extends StatelessWidget {
               ),
             ),
             Divider(),
-            getPostInfoPageBanner(),
-            Divider(),
             Text('SHORT INFO', style: headingStyle),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -94,50 +94,6 @@ class PostInfo extends StatelessWidget {
               ),
             ),
             Divider(),
-            if (post.totalVacancy != null) ...[
-              Text('TOTAL POST VACANCY', style: headingStyle),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  post.totalVacancy.toString(),
-                  style: bodyStyle,
-                ),
-              ),
-              Divider(),
-            ],
-            if (post.fees.length != 0) ...[
-              Text('APPLICATION FEES', style: headingStyle),
-              SizedBox(height: 8.0),
-              for (var fee in post.fees)
-                Container(
-                  margin: EdgeInsets.only(bottom: 4),
-                  padding: EdgeInsets.symmetric(vertical: 4),
-                  decoration: BoxDecoration(
-                      border: Border(
-                          bottom:
-                              BorderSide(width: 0.35, color: Colors.black38))),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 5,
-                        child: Text(
-                          fee.title,
-                          style: bodyStyle,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          fee.amount,
-                          style: bodyStyle.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).primaryColor),
-                          textAlign: TextAlign.center,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-            ]
           ],
         ),
       ),

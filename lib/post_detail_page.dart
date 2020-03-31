@@ -3,6 +3,7 @@ import 'package:jobadda/model/post.dart';
 import 'package:jobadda/posts/post_dates.dart';
 import 'package:jobadda/posts/post_info.dart';
 import 'package:jobadda/posts/post_links.dart';
+import 'package:jobadda/posts/post_vacancy_detail.dart';
 
 class PostDetailPage extends StatelessWidget {
   @required
@@ -12,7 +13,7 @@ class PostDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -28,6 +29,7 @@ class PostDetailPage extends StatelessWidget {
                 labelColor: Theme.of(context).accentColor,
                 tabs: <Widget>[
                   Tab(text: 'INFO'),
+                  Tab(text: 'DETAIL'),
                   Tab(text: 'DATES'),
                   Tab(text: 'LINKS')
                 ],
@@ -37,6 +39,7 @@ class PostDetailPage extends StatelessWidget {
               child: TabBarView(
                 children: <Widget>[
                   PostInfo(post: post),
+                  PostVacancyDetail(post: post,),
                   PostDates(post: post),
                   PostLinks(post: post)
                 ],

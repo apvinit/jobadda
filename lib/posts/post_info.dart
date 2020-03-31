@@ -109,22 +109,34 @@ class PostInfo extends StatelessWidget {
               Text('APPLICATION FEES', style: headingStyle),
               SizedBox(height: 8.0),
               for (var fee in post.fees)
-                RichText(
-                  text: TextSpan(
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText2
-                        .copyWith(fontSize: 18),
-                    children: [
-                      TextSpan(text: fee.title),
-                      TextSpan(text: " - "),
-                      TextSpan(
-                          text: fee.amount,
-                          style: TextStyle(fontWeight: FontWeight.bold))
+                Container(
+                  margin: EdgeInsets.only(bottom: 4),
+                  padding: EdgeInsets.symmetric(vertical: 4),
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom:
+                              BorderSide(width: 0.35, color: Colors.black38))),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 5,
+                        child: Text(
+                          fee.title,
+                          style: bodyStyle,
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          fee.amount,
+                          style: bodyStyle.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
                     ],
                   ),
                 ),
-              Divider(),
             ]
           ],
         ),

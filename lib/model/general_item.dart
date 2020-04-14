@@ -4,7 +4,7 @@ class GeneralItem {
 
   GeneralItem({this.title, this.body});
 
-  factory GeneralItem.fromMap(Map<String, dynamic> map) {
+  factory GeneralItem.fromMap(Map<dynamic, dynamic> map) {
     return GeneralItem(
       title: map['title'],
       body: map['body'],

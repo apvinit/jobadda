@@ -47,7 +47,7 @@ class VacancyItem {
     };
   }
 
-  factory VacancyItem.fromMap(Map<String, dynamic> map) {
+  factory VacancyItem.fromMap(Map<dynamic, dynamic> map) {
     return VacancyItem(
       category: map['category'],
       name: map['name'],

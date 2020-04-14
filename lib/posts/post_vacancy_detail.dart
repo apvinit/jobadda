@@ -282,7 +282,7 @@ class _VacancyTileState extends State<VacancyTile> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('Age', style: titleStyle),
+                  Text('Age Limit', style: titleStyle),
                   Text(widget.item.age, style: bodyStyle)
                 ],
               ),

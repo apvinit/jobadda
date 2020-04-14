@@ -1,6 +1,8 @@
 import 'package:jobadda/model/application_fee.dart';
+import 'package:jobadda/model/vacancy_item.dart';
 import 'package:jobadda/utils/util.dart';
 
+import 'general_item.dart';
 import 'important_date.dart';
 import 'important_link.dart';
 
@@ -17,6 +19,9 @@ class Post {
   List<ImportantDate> dates;
   List<ImportantLink> links;
   List<ApplicationFee> fees;
+  List<GeneralItem> ageLimits;
+  String ageLimitAsOn;
+  List<VacancyItem> vacancies;
   bool draft;
 
   Post({
@@ -32,6 +37,9 @@ class Post {
     this.dates,
     this.links,
     this.fees,
+    this.ageLimits,
+    this.ageLimitAsOn,
+    this.vacancies,
     this.draft,
   });
 
@@ -49,25 +57,32 @@ class Post {
       'dates': dates.map((date) => date.toMap()),
       'links': links.map((link) => link.toMap()),
       'fees': fees.map((fee) => fee.toMap()),
-      'draft': draft
+      'ageLimits': ageLimits.map((ageLimit) => ageLimit.toMap()),
+      'ageLimitAsOn': ageLimitAsOn,
+      'vacancies': vacancies.map((e) => e.toMap()),
+      'draft': draft,
     };
   }
 
   factory Post.fromMap(Map<String, dynamic> map) {
     return Post(
-        id: map['id'],
-        type: map['type'],
-        title: map['title'],
-        createdDate: formattedDate(map['createdDate']),
-        updatedDate: formattedDate(map['updatedDate']),
-        name: map['name'],
-        info: map['info'],
-        organisation: map['organisation'],
-        totalVacancy: map['totalVacancy'],
-        dates: datesFromMap(map['dates']),
-        links: linksFromMap(map['links']),
-        fees: feesFromMap(map['fees']),
-        draft: map['draft']);
+      id: map['id'],
+      type: map['type'],
+      title: map['title'],
+      createdDate: formattedDate(map['createdDate']),
+      updatedDate: formattedDate(map['updatedDate']),
+      name: map['name'],
+      info: map['info'],
+      organisation: map['organisation'],
+      totalVacancy: map['totalVacancy'],
+      dates: datesFromMap(map['dates']),
+      links: linksFromMap(map['links']),
+      fees: feesFromMap(map['fees']),
+      ageLimits: itemsFromMap(map['ageLimits']),
+      ageLimitAsOn: map['ageLimitAsOn'] ?? "",
+      vacancies: vacanciesFromMap(map['vacancies']),
+      draft: map['draft'],
+    );
   }
 
   static List<ImportantLink> linksFromMap(List<dynamic> list) {
@@ -80,6 +95,16 @@ class Post {
 
   static List<ApplicationFee> feesFromMap(List<dynamic> list) {
     return list.map((e) => ApplicationFee.fromMap(e)).toList();
+  }
+
+  static List<GeneralItem> itemsFromMap(List<dynamic> list) {
+    if (list == null) return [];
+    return list.map((e) => GeneralItem.fromMap(e)).toList();
+  }
+
+  static List<VacancyItem> vacanciesFromMap(List<dynamic> list) {
+    if (list == null) return [];
+    return list.map((e) => VacancyItem.fromMap(e)).toList();
   }
 
   toString() {

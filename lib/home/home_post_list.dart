@@ -5,7 +5,6 @@ import 'package:jobadda/services/database.dart';
 
 import 'home_post_list_tile.dart';
 
-
 class HomePostList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,16 +14,10 @@ class HomePostList extends StatelessWidget {
         if (snapshot.hasData) {
           var posts = snapshot.data;
           return ListView(
-              // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: posts.map((post) => HomePostListTile(post)).toList());
         } else {
-          return Column(
-            children: <Widget>[
-              PostTileShimmer(),
-              PostTileShimmer(),
-              PostTileShimmer(),
-            ],
-          );
+          return ListView.builder(
+              itemCount: 15, itemBuilder: (_, __) => PostTileShimmer());
         }
       },
     );

@@ -1,33 +1,16 @@
-import 'dart:math';
-
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:jobadda/model/post.dart';
 
+import '../colors.dart';
 import '../post_detail_page.dart';
 
 class HomePostListTile extends StatelessWidget {
   final Post post;
   final AdmobInterstitial interstitial;
 
-  final colors = [
-    // Results = 0
-    // AdmitCard = 1
-    // Latest Job = 2
-    // Answer Keys = 3
-    // Admission = 4
-    // Syllabus = 5
-    Colors.indigo,
-    Colors.green,
-    Colors.purple,
-    Colors.red,
-    Colors.orange,
-    Colors.teal,
-  ];
-
-  final random = Random();
-
   HomePostListTile(this.post, {this.interstitial});
+
   @override
   Widget build(BuildContext context) {
     var color;

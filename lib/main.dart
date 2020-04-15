@@ -1,6 +1,6 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:jobadda/home_page.dart';
+import 'package:jobadda/bottom_nav_page.dart';
 
 import 'services/push_messaging.dart';
 
@@ -17,10 +17,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Job Adda',
       theme: ThemeData(
+        splashColor: Color(0xFFFF735E).withOpacity(0.1),
+        highlightColor: Color(0xFFFF735E).withOpacity(0.1),
         primaryColor: Color(0xFF1A535C),
         accentColor: Color(0xFFFF735E),
       ),
-      home: HomePage(),
+      home: BottomNavPage(),
       navigatorKey: navigatorKey,
     );
   }

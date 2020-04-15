@@ -11,6 +11,7 @@ class PostLinks extends StatelessWidget {
   Widget build(BuildContext context) {
     if (post.links.length == 0) {
       return Container(
+        margin: EdgeInsets.only(top: 4),
         padding: EdgeInsets.only(top: 150),
         color: Colors.white,
         alignment: Alignment.topCenter,

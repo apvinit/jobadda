@@ -8,6 +8,14 @@ class Database {
     return snapshot.documents.map((doc) => Post.fromMap(doc.data)).toList();
   }
 
+  Stream<List<Post>> getRecentPosts() {
+    return _postsCollection
+        .limit(40)
+        .orderBy("id", descending: true)
+        .snapshots()
+        .map(_postListFromSnapshot);
+  }
+
   Stream<List<Post>> getRecentResults() {
     return _postsCollection
         .where('type', isEqualTo: 'Results')

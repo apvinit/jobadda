@@ -6,31 +6,26 @@ import 'package:jobadda/model/post.dart';
 class PostInfo extends StatelessWidget {
   @required
   final Post post;
+  final Color color;
 
-  PostInfo({this.post});
+  PostInfo({this.post, this.color});
 
   @override
   Widget build(BuildContext context) {
-    var headingStyle = TextStyle(
-      fontSize: 18.0,
-      color: Theme.of(context).accentColor,
-      fontWeight: FontWeight.bold,
-    );
+    var headingStyle =
+        Theme.of(context).textTheme.subtitle2.copyWith(color: color);
 
-    var bodyStyle = TextStyle(fontSize: 18.0);
+    var bodyStyle = Theme.of(context).textTheme.subtitle1;
 
     return SingleChildScrollView(
       child: Container(
-        color: Colors.white54,
+        color: Colors.white,
+        margin: EdgeInsets.only(top: 4),
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text('POST',
-                style: TextStyle(
-                    fontSize: 18.0,
-                    color: Theme.of(context).accentColor,
-                    fontWeight: FontWeight.bold)),
+            Text('POST', style: headingStyle),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(

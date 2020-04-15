@@ -4,21 +4,21 @@ import 'package:jobadda/model/vacancy_item.dart';
 
 class PostVacancyDetail extends StatelessWidget {
   final Post post;
+  final Color color;
 
-  PostVacancyDetail({this.post});
+  PostVacancyDetail({this.post, this.color});
   @override
   Widget build(BuildContext context) {
-    var headingStyle = TextStyle(
-      fontSize: 18.0,
-      color: Theme.of(context).accentColor,
-      fontWeight: FontWeight.bold,
-    );
+    var headingStyle =
+        Theme.of(context).textTheme.subtitle2.copyWith(color: color);
 
-    var bodyStyle = TextStyle(fontSize: 18.0);
+    var bodyStyle = Theme.of(context).textTheme.subtitle1;
 
     return SingleChildScrollView(
       child: Container(
-        margin: EdgeInsets.all(8),
+        margin: EdgeInsets.only(top: 4),
+        color: Colors.white,
+        padding: EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -76,8 +76,10 @@ class PostVacancyDetail extends StatelessWidget {
                       child: Text(
                         '(as on ${post.ageLimitAsOn})',
                         textAlign: TextAlign.end,
-                        style: Theme.of(context).textTheme.overline.copyWith(
-                            fontSize: 14, color: Theme.of(context).accentColor),
+                        style: Theme.of(context)
+                            .textTheme
+                            .overline
+                            .copyWith(fontSize: 14, color: color),
                       ),
                     ),
                 ],
@@ -120,7 +122,11 @@ class PostVacancyDetail extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Column(
                   children: <Widget>[
-                    for (var item in post.vacancies) VacancyTile(item: item)
+                    for (var item in post.vacancies)
+                      VacancyTile(
+                        item: item,
+                        color: color,
+                      )
                   ],
                 ),
               )
@@ -134,9 +140,11 @@ class PostVacancyDetail extends StatelessWidget {
 
 class VacancyTile extends StatefulWidget {
   final VacancyItem item;
+  final Color color;
   const VacancyTile({
     Key key,
     this.item,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -148,14 +156,9 @@ class _VacancyTileState extends State<VacancyTile> {
 
   @override
   Widget build(BuildContext context) {
-    final titleStyle = TextStyle(
-        fontSize: 16,
-        color: Theme.of(context).accentColor,
-        fontWeight: FontWeight.bold);
-    final bodyStyle = TextStyle(
-        fontSize: 18,
-        color: Theme.of(context).primaryColor,
-        fontWeight: FontWeight.bold);
+    final titleStyle =
+        Theme.of(context).textTheme.subtitle2.copyWith(color: widget.color);
+    final bodyStyle = Theme.of(context).textTheme.subtitle1;
     return Container(
       margin: EdgeInsets.only(bottom: 8),
       child: Column(
@@ -174,12 +177,20 @@ class _VacancyTileState extends State<VacancyTile> {
                 children: <Widget>[
                   Text(
                     widget.item.name,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: Theme.of(context).textTheme.subtitle1.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).primaryColor),
                   ),
                   if (isExpanded)
-                    Icon(Icons.keyboard_arrow_up)
+                    Icon(
+                      Icons.keyboard_arrow_up,
+                      color: widget.color,
+                    )
                   else
-                    Icon(Icons.keyboard_arrow_down)
+                    Icon(
+                      Icons.keyboard_arrow_down,
+                      color: widget.color,
+                    )
                 ],
               ),
             ),

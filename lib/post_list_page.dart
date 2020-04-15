@@ -1,8 +1,8 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:jobadda/ads.dart';
+import 'package:jobadda/home/home_post_list_tile.dart';
 import 'package:jobadda/model/post.dart';
-import 'package:jobadda/post_item_tile.dart';
 import 'package:jobadda/services/database.dart';
 
 import 'posts/post_tile_shimmer.dart';
@@ -73,8 +73,8 @@ class _PostListPageState extends State<PostListPage> {
             return ListView.builder(
                 itemCount: posts.length,
                 itemBuilder: (context, index) {
-                  return PostItemTile(
-                      post: posts[index], interstitial: _interstitial);
+                  return HomePostListTile(posts[index],
+                      interstitial: _interstitial);
                 });
           } else {
             return ListView.builder(

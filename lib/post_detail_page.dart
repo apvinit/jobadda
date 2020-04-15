@@ -5,6 +5,8 @@ import 'package:jobadda/posts/post_info.dart';
 import 'package:jobadda/posts/post_links.dart';
 import 'package:jobadda/posts/post_vacancy_detail.dart';
 
+import 'colors.dart';
+
 class PostDetailPage extends StatelessWidget {
   @required
   final Post post;
@@ -12,6 +14,30 @@ class PostDetailPage extends StatelessWidget {
   PostDetailPage({this.post});
   @override
   Widget build(BuildContext context) {
+    var color;
+
+    switch (post.type) {
+      case "Results":
+        color = colors[0];
+        break;
+      case "Admit Card":
+        color = colors[1];
+        break;
+      case "Latest Job":
+        color = colors[2];
+        break;
+      case "Answer Keys":
+        color = colors[3];
+        break;
+
+      case "Admission":
+        color = colors[4];
+        break;
+      case "Syllabus":
+        color = colors[5];
+        break;
+    }
+
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -26,7 +52,8 @@ class PostDetailPage extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
               elevation: 2,
               child: TabBar(
-                labelColor: Theme.of(context).accentColor,
+                labelColor: color,
+                indicatorColor: color,
                 tabs: <Widget>[
                   Tab(text: 'INFO'),
                   Tab(text: 'DETAIL'),
@@ -38,8 +65,11 @@ class PostDetailPage extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  PostInfo(post: post),
-                  PostVacancyDetail(post: post,),
+                  PostInfo(post: post, color: color),
+                  PostVacancyDetail(
+                    post: post,
+                    color: color
+                  ),
                   PostDates(post: post),
                   PostLinks(post: post)
                 ],

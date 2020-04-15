@@ -64,7 +64,7 @@ class HomePostListTile extends StatelessWidget {
                         .subtitle2
                         .copyWith(color: color),
                   ),
-                  Text(post.createdDate,
+                  Text(post.updatedDate,
                       style: Theme.of(context)
                           .textTheme
                           .caption

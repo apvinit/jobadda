@@ -34,8 +34,6 @@ class PostInfo extends StatelessWidget {
               ),
             ),
             Divider(),
-            getPostInfoPageBanner(),
-            Divider(),
             Row(
               children: <Widget>[
                 Expanded(
@@ -88,6 +86,8 @@ class PostInfo extends StatelessWidget {
                 style: bodyStyle,
               ),
             ),
+            Divider(),
+            getPostInfoPageBanner(),
             Divider(),
           ],
         ),

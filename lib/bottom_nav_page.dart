@@ -11,15 +11,14 @@ class BottomNavPage extends StatefulWidget {
 
 class _BottomNavPageState extends State<BottomNavPage> {
   int _selectedIndex = 0;
+  final postDelegate = PostSearchDelegate();
 
   static final homePostList = HomePostList();
   static final categoryPage = CatergoyPage();
-  static final searchPage = SearchPage();
 
   List<Widget> _widgetOptions = <Widget>[
     homePostList,
     categoryPage,
-    searchPage,
   ];
 
   @override
@@ -41,7 +40,11 @@ class _BottomNavPageState extends State<BottomNavPage> {
     );
   }
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index) async {
+    if (index == 2) {
+      await showSearch(context: context, delegate: postDelegate);
+      return;
+    }
     setState(() {
       _selectedIndex = index;
     });

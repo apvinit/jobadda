@@ -5,7 +5,7 @@ import 'package:jobadda/services/database.dart';
 
 class PostSearchDelegate extends SearchDelegate {
   List<Post> posts;
-  PostSearchDelegate() : super(searchFieldLabel: 'Search older post..') {
+  PostSearchDelegate() : super(searchFieldLabel: 'Search post..') {
     Database().getRecentPosts().forEach((element) {
       posts = element;
     });
@@ -43,6 +43,11 @@ class PostSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    if (query.isEmpty)
+      return Center(
+        child: Text('Search posts...'),
+      );
+
     final List<Widget> items = [];
 
     posts.forEach((element) {
@@ -66,7 +71,7 @@ class PostSearchDelegate extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     if (query.isEmpty)
       return Center(
-        child: Text('Search older posts...'),
+        child: Text('Search posts...'),
       );
 
     final List<Widget> items = [];

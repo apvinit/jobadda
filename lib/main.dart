@@ -17,6 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Job Adda',
       theme: ThemeData(
+        primaryColorBrightness: Brightness.dark,
+        cursorColor: Colors.white,
+        hintColor: Colors.white54,
         splashColor: Color(0xFFFF735E).withOpacity(0.1),
         highlightColor: Color(0xFFFF735E).withOpacity(0.1),
         primaryColor: Color(0xFF1A535C),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jobadda/categories/category_page.dart';
-import 'package:jobadda/search/search_page.dart';
 
 import 'home/home_post_list.dart';
+import 'search/search_delegate.dart';
 
 class BottomNavPage extends StatefulWidget {
   @override

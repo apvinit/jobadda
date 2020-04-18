@@ -35,6 +35,8 @@ class HomePostListTile extends StatelessWidget {
       case "Syllabus":
         color = colors[5];
         break;
+      default:
+        color = Colors.cyan[600];
     }
 
     return Card(

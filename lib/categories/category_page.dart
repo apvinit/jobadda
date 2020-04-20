@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobadda/colors.dart';
 
-import '../post_list_page.dart';
+import 'category_list_page.dart';
 
 class CatergoyPage extends StatelessWidget {
   @override
@@ -11,8 +11,10 @@ class CatergoyPage extends StatelessWidget {
         elevation: 0,
         child: InkWell(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (_) => PostListPage(title: title)));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => CategoryListPage(title: title)));
           },
           child: Container(
             decoration: BoxDecoration(

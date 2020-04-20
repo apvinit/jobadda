@@ -2,13 +2,13 @@ class PostShortInfo {
   String id;
   String title;
   String type;
-  String updateDate;
+  String updatedDate;
 
   PostShortInfo({
     this.id,
     this.title,
     this.type,
-    this.updateDate,
+    this.updatedDate,
   });
 
   factory PostShortInfo.fromMap(Map<String, dynamic> map) {
@@ -16,7 +16,7 @@ class PostShortInfo {
       id: map['id'],
       title: map['title'],
       type: map['type'],
-      updateDate: map['updateDate'],
+      updatedDate: map['updatedDate'],
     );
   }
 
@@ -25,7 +25,7 @@ class PostShortInfo {
       'id': id,
       'title': title,
       'type': type,
-      'updateDate': updateDate,
+      'updatedDate': updatedDate,
     };
   }
 }

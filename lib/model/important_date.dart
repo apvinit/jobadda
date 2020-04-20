@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:jobadda/utils/util.dart';
 
 class ImportantDate {
   @required
@@ -14,7 +13,7 @@ class ImportantDate {
   }
 
   factory ImportantDate.fromMap(Map<dynamic, dynamic> map) {
-    return ImportantDate(date: formattedDate(map['date']), title: map['title']);
+    return ImportantDate(date: map['date'], title: map['title']);
   }
 
   @override

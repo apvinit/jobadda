@@ -1,6 +1,5 @@
 import 'package:jobadda/model/application_fee.dart';
 import 'package:jobadda/model/vacancy_item.dart';
-import 'package:jobadda/utils/util.dart';
 
 import 'general_item.dart';
 import 'important_date.dart';
@@ -69,8 +68,8 @@ class Post {
       id: map['id'],
       type: map['type'],
       title: map['title'],
-      createdDate: formattedDate(map['createdDate']),
-      updatedDate: formattedDate(map['updatedDate']),
+      createdDate: map['createdDate'],
+      updatedDate: map['updatedDate'],
       name: map['name'],
       info: map['info'],
       organisation: map['organisation'],

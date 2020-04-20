@@ -16,7 +16,6 @@ List<PostShortInfo> parsePosts(String responseBody) {
 
 Future<List<PostShortInfo>> getRecentPosts() async {
   final response = await http.get('$baseUrl/posts_info');
-  print(response.body);
   return compute(parsePosts, response.body);
 }
 

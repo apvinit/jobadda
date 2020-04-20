@@ -1,6 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:jobadda/push_notification_post_detail.dart';
+import 'package:jobadda/posts/post_detail_page.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
 
@@ -30,8 +30,7 @@ void configureNotification() {
 void navigateToPostDetail(String postId) async {
   navigatorKey.currentState.push(
     MaterialPageRoute(
-        builder: (_) => PushNotificationPostDetail(postId: postId),
-        fullscreenDialog: true),
+        builder: (_) => PostDetailPage(id: postId), fullscreenDialog: true),
   );
 }
 

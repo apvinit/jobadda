@@ -1,9 +1,9 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:jobadda/model/post_short_info.dart';
+import 'package:jobadda/posts/post_detail_page.dart';
 
 import '../colors.dart';
-import '../post_detail_page.dart';
 
 class HomePostListTile extends StatelessWidget {
   final PostShortInfo postinfo;

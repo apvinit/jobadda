@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jobadda/home/home_post_list_tile.dart';
-import 'package:jobadda/model/post.dart';
-import 'package:jobadda/services/database.dart';
+import 'package:jobadda/model/post_short_info.dart';
+import 'package:jobadda/services/remote_api.dart';
 
 class PostSearchDelegate extends SearchDelegate {
-  List<Post> posts;
-  PostSearchDelegate() : super(searchFieldLabel: 'Search post..') {
-    Database().getRecentPosts().forEach((element) {
-      posts = element;
-    });
-  }
+  PostSearchDelegate() : super(searchFieldLabel: 'Search post..');
 
   @override
   ThemeData appBarTheme(BuildContext context) {
@@ -43,53 +38,38 @@ class PostSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    if (query.isEmpty)
+    if (query.isEmpty || query.length < 4)
       return Center(
         child: Text('Search posts...'),
       );
 
-    final List<Widget> items = [];
-
-    posts.forEach((element) {
-      if (element.title.toLowerCase().contains(query.toLowerCase())) {
-        items.add(HomePostListTile(element));
-      }
-    });
-
-    if (items.length == 0) {
-      return Center(
-        child: Text('No match found...'),
-      );
-    }
-
-    return ListView(
-      children: items,
-    );
+    print("Build Results : $query");
+    return getSearchResult(query);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    if (query.isEmpty)
-      return Center(
-        child: Text('Search posts...'),
-      );
+    return buildResults(context);
+  }
 
-    final List<Widget> items = [];
-
-    posts.forEach((element) {
-      if (element.title.toLowerCase().contains(query.toLowerCase())) {
-        items.add(HomePostListTile(element));
-      }
-    });
-
-    if (items.length == 0) {
-      return Center(
-        child: Text('No match found...'),
-      );
-    }
-
-    return ListView(
-      children: items,
+  Widget getSearchResult(String query) {
+    return FutureBuilder(
+      future: searchPosts(query),
+      builder: (context, AsyncSnapshot<List<PostShortInfo>> snapshot) {
+        if (snapshot.hasData) {
+          var items = snapshot.data;
+          if (items.length == 0) {
+            return Center(
+              child: Text('No match found...'),
+            );
+          }
+          return ListView(
+            children: items.map((e) => HomePostListTile(e)).toList(),
+          );
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:jobadda/model/post.dart';
+import 'package:jobadda/model/post_short_info.dart';
 import 'package:jobadda/posts/post_tile_shimmer.dart';
-import 'package:jobadda/services/database.dart';
+import 'package:jobadda/services/remote_api.dart';
 
 import '../ads.dart';
 import 'home_post_list_tile.dart';
@@ -14,10 +14,12 @@ class HomePostList extends StatefulWidget {
 
 class _HomePostListState extends State<HomePostList> {
   AdmobInterstitial _interstitial;
+  Future<List<PostShortInfo>> postsFuture;
 
   @override
   void initState() {
     super.initState();
+    postsFuture = getRecentPosts();
     _interstitial = AdmobInterstitial(
       adUnitId: getInterstitialAdUnit(),
       listener: (AdmobAdEvent event, Map<String, dynamic> args) {
@@ -35,9 +37,9 @@ class _HomePostListState extends State<HomePostList> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: Database().getRecentPosts(),
-      builder: (context, AsyncSnapshot<List<Post>> snapshot) {
+    return FutureBuilder<List<PostShortInfo>>(
+      future: postsFuture,
+      builder: (context, AsyncSnapshot<List<PostShortInfo>> snapshot) {
         if (snapshot.hasData) {
           var posts = snapshot.data;
           return ListView(

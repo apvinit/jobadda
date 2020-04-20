@@ -1,21 +1,21 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:jobadda/model/post.dart';
+import 'package:jobadda/model/post_short_info.dart';
 
 import '../colors.dart';
 import '../post_detail_page.dart';
 
 class HomePostListTile extends StatelessWidget {
-  final Post post;
+  final PostShortInfo postinfo;
   final AdmobInterstitial interstitial;
 
-  HomePostListTile(this.post, {this.interstitial});
+  HomePostListTile(this.postinfo, {this.interstitial});
 
   @override
   Widget build(BuildContext context) {
     var color;
 
-    switch (post.type) {
+    switch (postinfo.type) {
       case "Results":
         color = colors[0];
         break;
@@ -45,9 +45,9 @@ class HomePostListTile extends StatelessWidget {
         onTap: () async {
           if (await interstitial?.isLoaded ?? false) {
             interstitial.show();
-            navigateToPostDetail(context);
+            navigateToPostDetail(context, color);
           } else
-            navigateToPostDetail(context);
+            navigateToPostDetail(context, color);
         },
         child: Container(
           padding: EdgeInsets.all(16),
@@ -60,13 +60,13 @@ class HomePostListTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    post.type.toUpperCase(),
+                    postinfo.type.toUpperCase(),
                     style: Theme.of(context)
                         .textTheme
                         .subtitle2
                         .copyWith(color: color),
                   ),
-                  Text(post.updatedDate,
+                  Text(postinfo.updatedDate ?? '',
                       style: Theme.of(context)
                           .textTheme
                           .caption
@@ -74,7 +74,7 @@ class HomePostListTile extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 8),
-              Text(post.title, style: Theme.of(context).textTheme.subtitle1)
+              Text(postinfo.title, style: Theme.of(context).textTheme.subtitle1)
             ],
           ),
         ),
@@ -82,11 +82,12 @@ class HomePostListTile extends StatelessWidget {
     );
   }
 
-  void navigateToPostDetail(BuildContext context) {
+  void navigateToPostDetail(BuildContext context, Color color) {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (_) => PostDetailPage(post: post), fullscreenDialog: true),
+          builder: (_) => PostDetailPage(id: postinfo.id, color: color),
+          fullscreenDialog: true),
     );
   }
 }

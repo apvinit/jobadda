@@ -38,7 +38,7 @@ class PostSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    if (query.isEmpty || query.length < 4)
+    if (query.isEmpty || query.length < 3)
       return Center(
         child: Text('Search posts...'),
       );

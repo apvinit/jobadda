@@ -175,11 +175,13 @@ class _VacancyTileState extends State<VacancyTile> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(
-                    widget.item.name,
-                    style: Theme.of(context).textTheme.subtitle1.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor),
+                  Expanded(
+                    child: Text(
+                      widget.item.name,
+                      style: Theme.of(context).textTheme.subtitle1.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).primaryColor),
+                    ),
                   ),
                   if (isExpanded)
                     Icon(

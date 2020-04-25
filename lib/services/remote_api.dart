@@ -5,7 +5,12 @@ import 'package:jobadda/model/post.dart';
 import 'package:jobadda/model/post_short_info.dart';
 import 'package:http/http.dart' as http;
 
-final String baseUrl = "http://localhost:1323/api";
+String getBaseUrl() {
+  if (kReleaseMode) {
+    return "http://192.168.43.7:1323/api";
+  }
+  return "http://localhost:1323/api";
+}
 
 List<PostShortInfo> parsePosts(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
@@ -15,7 +20,7 @@ List<PostShortInfo> parsePosts(String responseBody) {
 }
 
 Future<List<PostShortInfo>> getRecentPosts() async {
-  final response = await http.get('$baseUrl/posts');
+  final response = await http.get('${getBaseUrl()}/posts');
   if (response.statusCode == 200) {
     return compute(parsePosts, response.body);
   } else {
@@ -24,7 +29,7 @@ Future<List<PostShortInfo>> getRecentPosts() async {
 }
 
 Future<Post> getPostById(String id) async {
-  final response = await http.get('$baseUrl/post/$id');
+  final response = await http.get('${getBaseUrl()}/post/$id');
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -38,11 +43,11 @@ Future<Post> getPostById(String id) async {
 }
 
 Future<List<PostShortInfo>> getPostsByType(String param) async {
-  final response = await http.get('$baseUrl/posts?type=$param');
+  final response = await http.get('${getBaseUrl()}/posts?type=$param');
   return compute(parsePosts, response.body);
 }
 
 Future<List<PostShortInfo>> searchPosts(String query) async {
-  final response = await http.get('$baseUrl/posts/search?q=$query');
+  final response = await http.get('${getBaseUrl()}/posts/search?q=$query');
   return compute(parsePosts, response.body);
 }

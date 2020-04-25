@@ -15,6 +15,7 @@ class HomePostList extends StatefulWidget {
 class _HomePostListState extends State<HomePostList> {
   AdmobInterstitial _interstitial;
   Future<List<PostShortInfo>> postsFuture;
+  final _refreshKey = GlobalKey<RefreshIndicatorState>();
 
   @override
   void initState() {
@@ -42,13 +43,22 @@ class _HomePostListState extends State<HomePostList> {
       builder: (context, AsyncSnapshot<List<PostShortInfo>> snapshot) {
         if (snapshot.hasData) {
           var posts = snapshot.data;
-          return ListView(
-              children: posts
-                  .map((post) => HomePostListTile(
-                        post,
-                        interstitial: _interstitial,
-                      ))
-                  .toList());
+          return RefreshIndicator(
+            key: _refreshKey,
+            onRefresh: () async {
+              setState(() {
+                postsFuture = getRecentPosts();
+              });
+              return Future.delayed(Duration(seconds: 1));
+            },
+            child: ListView(
+                children: posts
+                    .map((post) => HomePostListTile(
+                          post,
+                          interstitial: _interstitial,
+                        ))
+                    .toList()),
+          );
         } else {
           return ListView.builder(
               itemCount: 15, itemBuilder: (_, __) => PostTileShimmer());

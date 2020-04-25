@@ -29,16 +29,16 @@ class _CategoryListPageState extends State<CategoryListPage> {
         future = getPostsByType('Results');
         break;
       case 'Admit Cards':
-        future = getPostsByType('Admit Cards');
+        future = getPostsByType('Admit Card');
         break;
       case 'Latest Jobs':
-        future = getPostsByType('Latest Jobs');
+        future = getPostsByType('Latest Job');
         break;
       case 'Answer Keys':
         future = getPostsByType('Answer Keys');
         break;
       case 'Admissions':
-        future = getPostsByType('Admissions');
+        future = getPostsByType('Admission');
         break;
       case 'Syllabus':
         future = getPostsByType('Syllabus');

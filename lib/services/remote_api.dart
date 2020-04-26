@@ -44,10 +44,18 @@ Future<Post> getPostById(String id) async {
 
 Future<List<PostShortInfo>> getPostsByType(String param) async {
   final response = await http.get('${getBaseUrl()}/posts?type=$param');
-  return compute(parsePosts, response.body);
+  if (response.statusCode == 200) {
+    return compute(parsePosts, response.body);
+  } else {
+    throw Exception("Failed to get posts");
+  }
 }
 
 Future<List<PostShortInfo>> searchPosts(String query) async {
   final response = await http.get('${getBaseUrl()}/posts/search?q=$query');
-  return compute(parsePosts, response.body);
+  if (response.statusCode == 200) {
+    return compute(parsePosts, response.body);
+  } else {
+    throw Exception("Failed to get posts");
+  }
 }

@@ -7,9 +7,9 @@ import 'package:http/http.dart' as http;
 
 String getBaseUrl() {
   if (kReleaseMode) {
-    return "http://192.168.43.7:1323/api";
+    return "http://jobadda.company:1323/api";
   }
-  return "http://192.168.43.7:1323/api";
+  return "http://jobadda.company:1323/api";
 }
 
 List<PostShortInfo> parsePosts(String responseBody) {

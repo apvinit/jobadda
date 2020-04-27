@@ -6,7 +6,7 @@ import 'category_list_page.dart';
 class CatergoyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget getItem(String title, int c) {
+    Widget getItem(String title, Color c) {
       return Card(
         elevation: 0,
         child: InkWell(
@@ -18,7 +18,7 @@ class CatergoyPage extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-              border: Border(left: BorderSide(color: colors[c], width: 6)),
+              border: Border(left: BorderSide(color: c, width: 6)),
             ),
             margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
@@ -28,14 +28,14 @@ class CatergoyPage extends StatelessWidget {
                 Text(
                   title.toUpperCase(),
                   style: TextStyle(
-                    color: colors[c],
+                    color: c,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 Icon(
                   Icons.keyboard_arrow_right,
-                  color: colors[c],
+                  color: c,
                 ),
               ],
             ),
@@ -48,12 +48,12 @@ class CatergoyPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          getItem('Latest Jobs', 0),
-          getItem('Results', 1),
-          getItem('Admit Cards', 2),
-          getItem('Answer Keys', 3),
-          getItem('Admissions', 4),
-          getItem('Syllabus', 5),
+          getItem('Latest Jobs', latestJobColor),
+          getItem('Results', resultColor),
+          getItem('Admit Cards', admitCardColor),
+          getItem('Answer Keys', answerKeyColor),
+          getItem('Admissions', admissionColor),
+          getItem('Syllabus', syllabusColor),
         ],
       ),
     );

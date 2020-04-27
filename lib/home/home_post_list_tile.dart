@@ -17,26 +17,26 @@ class HomePostListTile extends StatelessWidget {
 
     switch (postinfo.type) {
       case "Results":
-        color = colors[0];
+        color = resultColor;
         break;
       case "Admit Card":
-        color = colors[1];
+        color = admitCardColor;
         break;
       case "Latest Job":
-        color = colors[2];
+        color = latestJobColor;
         break;
       case "Answer Keys":
-        color = colors[3];
+        color = answerKeyColor;
         break;
 
       case "Admission":
-        color = colors[4];
+        color = admissionColor;
         break;
       case "Syllabus":
-        color = colors[5];
+        color = syllabusColor;
         break;
       default:
-        color = Colors.cyan[600];
+        color = defaultColor;
     }
 
     return Card(

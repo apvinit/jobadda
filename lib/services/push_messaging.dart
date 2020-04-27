@@ -2,7 +2,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:jobadda/posts/post_detail_page.dart';
 
-final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>();
+import '../main.dart';
+
 
 void configureNotification() {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();

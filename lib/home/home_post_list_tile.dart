@@ -86,7 +86,7 @@ class HomePostListTile extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (_) => PostDetailPage(id: postinfo.id, color: color),
+          builder: (_) => PostDetailPage(id: postinfo.id),
           fullscreenDialog: true),
     );
   }

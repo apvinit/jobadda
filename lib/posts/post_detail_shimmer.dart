@@ -1,27 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobadda/services/database.dart';
 import 'package:shimmer/shimmer.dart';
-
-import 'model/post.dart';
-import 'posts/post_detail_page.dart';
-
-class PushNotificationPostDetail extends StatelessWidget {
-  final String postId;
-
-  PushNotificationPostDetail({this.postId});
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<Post>(
-      future: Database().getPostById(postId),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return PostDetailPage(id: this.postId);
-        }
-        return PostDetailShimmer();
-      },
-    );
-  }
-}
 
 class PostDetailShimmer extends StatelessWidget {
   const PostDetailShimmer({

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobadda/home/home_post_list_tile.dart';
 import 'package:jobadda/model/post_short_info.dart';
+import 'package:jobadda/posts/post_tile_shimmer.dart';
 import 'package:jobadda/services/remote_api.dart';
 
 class PostSearchDelegate extends SearchDelegate {
@@ -43,7 +44,6 @@ class PostSearchDelegate extends SearchDelegate {
         child: Text('Search posts...'),
       );
 
-    print("Build Results : $query");
     return getSearchResult(query);
   }
 
@@ -67,7 +67,8 @@ class PostSearchDelegate extends SearchDelegate {
             children: items.map((e) => HomePostListTile(e)).toList(),
           );
         } else {
-          return Center(child: CircularProgressIndicator());
+          return ListView.builder(
+              itemCount: 10, itemBuilder: (_, __) => PostTileShimmer());
         }
       },
     );

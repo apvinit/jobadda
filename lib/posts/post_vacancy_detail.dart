@@ -1,4 +1,6 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:jobadda/ads.dart';
 import 'package:jobadda/model/post.dart';
 import 'package:jobadda/model/vacancy_item.dart';
 
@@ -116,6 +118,7 @@ class PostVacancyDetail extends StatelessWidget {
                     ],
                   ),
                 ),
+            getPostVacancyPageBanner(),
             if (post.vacancies.length != 0) ...[
               Text('VACANCY DETAILS', style: headingStyle),
               Padding(
@@ -134,6 +137,13 @@ class PostVacancyDetail extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget getPostVacancyPageBanner() {
+    return AdmobBanner(
+      adSize: AdmobBannerSize.LARGE_BANNER,
+      adUnitId: getPostVacancyDetailPageBannerAdUnit(),
     );
   }
 }

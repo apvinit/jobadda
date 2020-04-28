@@ -8,6 +8,8 @@ import 'important_link.dart';
 class Post {
   String id;
   String type;
+  String shortLink;
+  String imageLink;
   String title;
   String name;
   String info;
@@ -26,6 +28,8 @@ class Post {
   Post({
     this.id,
     this.type,
+    this.shortLink,
+    this.imageLink,
     this.title,
     this.name,
     this.info,
@@ -46,6 +50,7 @@ class Post {
     return {
       'id': id,
       'type': type,
+      'imageLink': imageLink,
       'title': title,
       'name': name,
       'info': info,
@@ -67,6 +72,8 @@ class Post {
     return Post(
       id: map['id'],
       type: map['type'],
+      shortLink: map['shortLink'],
+      imageLink: map['imageLink'],
       title: map['title'],
       createdDate: map['createdDate'],
       updatedDate: map['updatedDate'],

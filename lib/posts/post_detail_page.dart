@@ -58,42 +58,45 @@ class PostDetailPage extends StatelessWidget {
                   IconButton(
                     icon: Icon(Icons.share),
                     onPressed: () async {
-                      // Generate the dynamic link here for now
-                      // but use already created link get the link
-                      // through the post property (for faster sharing)
-                      final parameters = DynamicLinkParameters(
-                        uriPrefix: getUrlPrefix(),
-                        link: Uri.parse(
-                          "https://sarkarijobadda.in/${post.id}",
-                        ),
-                        androidParameters: AndroidParameters(
-                          packageName: getPackageName(),
-                          minimumVersion: 7,
-                        ),
-                        socialMetaTagParameters: SocialMetaTagParameters(
-                          title: post.title,
-                          description: post.info,
-                          imageUrl: Uri.parse(
-                            "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg",
+                      String url;
+                      if (post.shortLink == null) {
+                        final parameters = DynamicLinkParameters(
+                          uriPrefix: getUrlPrefix(),
+                          link: Uri.parse(
+                            "https://sarkarijobadda.in/${post.id}",
                           ),
-                        ),
+                          androidParameters: AndroidParameters(
+                            packageName: getPackageName(),
+                            minimumVersion: 7,
+                          ),
+                          socialMetaTagParameters: SocialMetaTagParameters(
+                            title: post.title,
+                            description: post.info,
+                            imageUrl: Uri.parse(
+                              "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg",
+                            ),
+                          ),
+                        );
+
+                        final longUrl = await parameters.buildUrl();
+
+                        final shortenedLink =
+                            await DynamicLinkParameters.shortenUrl(
+                          longUrl,
+                          DynamicLinkParametersOptions(
+                            shortDynamicLinkPathLength:
+                                ShortDynamicLinkPathLength.short,
+                          ),
+                        );
+                        url = shortenedLink.shortUrl.toString();
+                      } else {
+                        url = post.shortLink;
+                      }
+
+                      Share.share(
+                        "${post.name} \n\nSee full post here:\n$url ",
+                        subject: post.title,
                       );
-
-                      final longUrl = await parameters.buildUrl();
-
-                      final shortenedLink =
-                          await DynamicLinkParameters.shortenUrl(
-                        longUrl,
-                        DynamicLinkParametersOptions(
-                          shortDynamicLinkPathLength:
-                              ShortDynamicLinkPathLength.short,
-                        ),
-                      );
-
-                      final url = shortenedLink.shortUrl;
-
-                      Share.share("${post.name} \n\nSee full post here:\n$url ",
-                          subject: post.title);
                     },
                   )
                 ],

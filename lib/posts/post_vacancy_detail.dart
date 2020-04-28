@@ -118,7 +118,7 @@ class PostVacancyDetail extends StatelessWidget {
                     ],
                   ),
                 ),
-            getPostVacancyPageBanner(),
+            Center(child: getPostVacancyPageBanner()),
             if (post.vacancies.length != 0) ...[
               Text('VACANCY DETAILS', style: headingStyle),
               Padding(

@@ -119,6 +119,7 @@ class PostVacancyDetail extends StatelessWidget {
                   ),
                 ),
             Center(child: getPostVacancyPageBanner()),
+            Divider(),
             if (post.vacancies.length != 0) ...[
               Text('VACANCY DETAILS', style: headingStyle),
               Padding(
@@ -211,7 +212,7 @@ class _VacancyTileState extends State<VacancyTile> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                if (widget.item.category != null)
+                if (widget.item.category != null && widget.item.category.isNotEmpty)
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -222,7 +223,7 @@ class _VacancyTileState extends State<VacancyTile> {
                       ],
                     ),
                   ),
-                if (widget.item.total != null)
+                if (widget.item.total != null && widget.item.total.isNotEmpty)
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -234,64 +235,64 @@ class _VacancyTileState extends State<VacancyTile> {
                   ),
               ],
             ),
-            if (widget.item.gen != null ||
-                widget.item.obc != null ||
-                widget.item.bca != null ||
-                widget.item.bcb != null)
+            if ((widget.item.gen != null && widget.item.gen.isNotEmpty) ||
+                (widget.item.obc != null && widget.item.obc.isNotEmpty) ||
+                (widget.item.bca != null && widget.item.bca.isNotEmpty) ||
+                (widget.item.bcb != null && widget.item.bcb.isNotEmpty))
               Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                if (widget.item.gen != null)
+                if (widget.item.gen != null && widget.item.gen.isNotEmpty)
                   Column(
                     children: <Widget>[
                       Text('GEN', style: titleStyle),
                       Text(widget.item.gen, style: bodyStyle),
                     ],
                   ),
-                if (widget.item.obc != null)
+                if (widget.item.obc != null && widget.item.obc.isNotEmpty)
                   Column(
                     children: <Widget>[
                       Text('OBC', style: titleStyle),
                       Text(widget.item.obc, style: bodyStyle),
                     ],
                   ),
-                if (widget.item.bca != null)
+                if (widget.item.bca != null && widget.item.bca.isNotEmpty)
                   Column(
                     children: <Widget>[
                       Text('BC (I)', style: titleStyle),
                       Text(widget.item.bca, style: bodyStyle),
                     ],
                   ),
-                if (widget.item.bcb != null)
+                if (widget.item.bcb != null && widget.item.bcb.isNotEmpty)
                   Column(
                     children: <Widget>[
                       Text('BC (II)', style: titleStyle),
                       Text(widget.item.bcb, style: bodyStyle),
                     ],
                   ),
-                if (widget.item.ews != null)
+                if (widget.item.ews != null && widget.item.ews.isNotEmpty)
                   Column(
                     children: <Widget>[
                       Text('EWS', style: titleStyle),
                       Text(widget.item.ews, style: bodyStyle),
                     ],
                   ),
-                if (widget.item.sc != null)
+                if (widget.item.sc != null && widget.item.sc.isNotEmpty)
                   Column(
                     children: <Widget>[
                       Text('SC', style: titleStyle),
                       Text(widget.item.sc, style: bodyStyle),
                     ],
                   ),
-                if (widget.item.st != null)
+                if (widget.item.st != null && widget.item.st.isNotEmpty)
                   Column(
                     children: <Widget>[
                       Text('ST', style: titleStyle),
                       Text(widget.item.st, style: bodyStyle),
                     ],
                   ),
-                if (widget.item.ph != null)
+                if (widget.item.ph != null && widget.item.ph.isNotEmpty)
                   Column(
                     children: <Widget>[
                       Text('PH', style: titleStyle),
@@ -300,7 +301,7 @@ class _VacancyTileState extends State<VacancyTile> {
                   ),
               ],
             ),
-            if (widget.item.age != null) ...[
+            if (widget.item.age != null && widget.item.age.isNotEmpty) ...[
               Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -310,7 +311,7 @@ class _VacancyTileState extends State<VacancyTile> {
                 ],
               ),
             ],
-            if (widget.item.eligibility != null) ...[
+            if (widget.item.eligibility != null && widget.item.eligibility.isNotEmpty) ...[
               Divider(),
               Text('Eligibility', style: titleStyle),
               SizedBox(height: 4),

@@ -59,6 +59,11 @@ class _HomePostListState extends State<HomePostList> {
                         ))
                     .toList()),
           );
+        } else if (snapshot.hasError) {
+          print(snapshot.error);
+          return Center(
+            child: Text('some error occured:-<'),
+          );
         } else {
           return ListView.builder(
               itemCount: 15, itemBuilder: (_, __) => PostTileShimmer());

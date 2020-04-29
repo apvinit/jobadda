@@ -66,6 +66,10 @@ class PostSearchDelegate extends SearchDelegate {
           return ListView(
             children: items.map((e) => HomePostListTile(e)).toList(),
           );
+        } else if (snapshot.hasError) {
+          return Center(
+            child: Text('Some error occured :-<'),
+          );
         } else {
           return ListView.builder(
               itemCount: 10, itemBuilder: (_, __) => PostTileShimmer());

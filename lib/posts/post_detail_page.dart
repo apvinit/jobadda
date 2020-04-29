@@ -133,6 +133,15 @@ class PostDetailPage extends StatelessWidget {
               ),
             ),
           );
+        } else if (snapshot.hasError) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('JobAdda'),
+            ),
+            body: Center(
+              child: Text('Some error occured :-<'),
+            ),
+          );
         }
         // by default show post detail shimmer
         return PostDetailShimmer();

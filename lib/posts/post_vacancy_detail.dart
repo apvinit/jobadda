@@ -57,7 +57,7 @@ class PostVacancyDetail extends StatelessWidget {
                   ),
                 ),
             ],
-            if (post.totalVacancy != null) ...[
+            if (post.totalVacancy != null && post.totalVacancy != 0) ...[
               SizedBox(height: 8),
               Text('TOTAL POST VACANCY', style: headingStyle),
               Padding(

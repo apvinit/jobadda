@@ -7,7 +7,7 @@ import '../main.dart';
 
 void configureNotification() {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-  _firebaseMessaging.subscribeToTopic('users');
+  _firebaseMessaging.subscribeToTopic('default');
   _firebaseMessaging.configure(
     onMessage: (Map<String, dynamic> message) async {
       // called when app is in foreground

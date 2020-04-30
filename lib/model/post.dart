@@ -92,14 +92,17 @@ class Post {
   }
 
   static List<ImportantLink> linksFromMap(List<dynamic> list) {
+    if (list == null) return [];
     return list.map((e) => ImportantLink.fromMap(e)).toList();
   }
 
   static List<ImportantDate> datesFromMap(List<dynamic> list) {
+    if (list == null) return [];
     return list.map((e) => ImportantDate.fromMap(e)).toList();
   }
 
   static List<ApplicationFee> feesFromMap(List<dynamic> list) {
+    if (list == null) return [];
     return list.map((e) => ApplicationFee.fromMap(e)).toList();
   }
 

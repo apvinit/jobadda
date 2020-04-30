@@ -63,7 +63,7 @@ class PostDetailPage extends StatelessWidget {
                         final parameters = DynamicLinkParameters(
                           uriPrefix: getUrlPrefix(),
                           link: Uri.parse(
-                            "https://sarkarijobadda.in/${post.id}",
+                            "https://jbda.in/${post.id}",
                           ),
                           androidParameters: AndroidParameters(
                             packageName: getPackageName(),

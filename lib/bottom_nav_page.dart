@@ -1,5 +1,6 @@
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
+import 'package:jobadda/analytics.dart';
 import 'package:jobadda/categories/category_page.dart';
 import 'package:jobadda/main.dart';
 
@@ -28,6 +29,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
   void initState() {
     super.initState();
     initDynamicLinks();
+    analytics.setCurrentScreen(screenName: '/home');
   }
 
   @override
@@ -50,7 +52,14 @@ class _BottomNavPageState extends State<BottomNavPage> {
   }
 
   void _onItemTapped(int index) async {
+    if (index == 0) {
+      analytics.setCurrentScreen(screenName: '/home');
+    } else if (index == 1) {
+      analytics.setCurrentScreen(screenName: '/category');
+    }
+
     if (index == 2) {
+      analytics.setCurrentScreen(screenName: '/search');
       await showSearch(context: context, delegate: postDelegate);
       return;
     }

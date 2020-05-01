@@ -1,6 +1,7 @@
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:jobadda/analytics.dart';
 import 'package:jobadda/model/post.dart';
 import 'package:jobadda/posts/post_dates.dart';
 import 'package:jobadda/posts/post_detail_shimmer.dart';
@@ -58,6 +59,7 @@ class PostDetailPage extends StatelessWidget {
                   IconButton(
                     icon: Icon(Icons.share),
                     onPressed: () async {
+                      analytics.logShare(contentType:   post.type, itemId: post.id, method: null);
                       String url;
                       if (post.shortLink == null) {
                         final parameters = DynamicLinkParameters(

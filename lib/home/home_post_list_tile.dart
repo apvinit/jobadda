@@ -87,7 +87,8 @@ class HomePostListTile extends StatelessWidget {
       context,
       MaterialPageRoute(
           builder: (_) => PostDetailPage(id: postinfo.id),
-          fullscreenDialog: true),
+          fullscreenDialog: true,
+          settings: RouteSettings(name: "/posts/${postinfo.id}")),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:jobadda/analytics.dart';
 import 'package:jobadda/bottom_nav_page.dart';
 
 import 'services/push_messaging.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BottomNavPage(),
       navigatorKey: navigatorKey,
+      navigatorObservers: [observer],
     );
   }
 }

@@ -12,9 +12,12 @@ class CatergoyPage extends StatelessWidget {
         child: InkWell(
           onTap: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (_) => CategoryListPage(title: title)));
+              context,
+              MaterialPageRoute(
+                settings: RouteSettings(name: "/category/$title"),
+                builder: (_) => CategoryListPage(title: title),
+              ),
+            );
           },
           child: Container(
             decoration: BoxDecoration(

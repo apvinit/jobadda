@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobadda/analytics.dart';
 import 'package:jobadda/home/home_post_list_tile.dart';
 import 'package:jobadda/model/post_short_info.dart';
 import 'package:jobadda/posts/post_tile_shimmer.dart';
@@ -43,7 +44,7 @@ class PostSearchDelegate extends SearchDelegate {
       return Center(
         child: Text('Search posts...'),
       );
-
+    analytics.logSearch(searchTerm: query);
     return getSearchResult(query);
   }
 

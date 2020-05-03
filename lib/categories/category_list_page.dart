@@ -19,6 +19,7 @@ class CategoryListPage extends StatefulWidget {
 class _CategoryListPageState extends State<CategoryListPage> {
   AdmobInterstitial _interstitial;
   Future<List<PostShortInfo>> future;
+  CategoryPostDelegate delegate;
 
   @override
   void initState() {
@@ -63,12 +64,23 @@ class _CategoryListPageState extends State<CategoryListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(
+        title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () async {
+              await showSearch(context: context, delegate: delegate);
+            },
+          )
+        ],
+      ),
       body: FutureBuilder(
         future: future,
         builder: (context, AsyncSnapshot<List<PostShortInfo>> snapshot) {
           if (snapshot.hasData) {
             var posts = snapshot.data;
+            delegate = CategoryPostDelegate(posts);
             return ListView.builder(
                 itemCount: posts.length,
                 itemBuilder: (context, index) {
@@ -82,5 +94,73 @@ class _CategoryListPageState extends State<CategoryListPage> {
         },
       ),
     );
+  }
+}
+
+class CategoryPostDelegate extends SearchDelegate {
+  CategoryPostDelegate(this.posts) : super(searchFieldLabel: 'Search Post');
+
+  List<PostShortInfo> posts;
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    final theme = Theme.of(context);
+    return theme.copyWith(
+      textTheme: theme.primaryTextTheme,
+    );
+  }
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        onPressed: () {
+          query = "";
+        },
+        icon: Icon(Icons.clear),
+      )
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: Icon(Icons.arrow_back),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    if (query.isEmpty) {
+      return Center(
+        child: Text('Search posts'),
+      );
+    }
+
+    final List<Widget> items = [];
+
+    posts.forEach((element) {
+      if (element.title.toLowerCase().contains(query.toLowerCase())) {
+        items.add(HomePostListTile(element));
+      }
+    });
+
+    if (items.length == 0) {
+      return Center(
+        child: Text('No match found...'),
+      );
+    }
+
+    return ListView(
+      children: items,
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    return buildResults(context);
   }
 }

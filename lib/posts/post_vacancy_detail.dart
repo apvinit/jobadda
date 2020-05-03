@@ -38,19 +38,20 @@ class PostVacancyDetail extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Expanded(
-                        flex: 5,
+                        flex: 4,
                         child: Text(
                           fee.title,
                           style: bodyStyle,
                         ),
                       ),
                       Expanded(
+                        flex: 2,
                         child: Text(
                           '₹${fee.amount}',
                           style: bodyStyle.copyWith(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).primaryColor),
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.right,
                         ),
                       )
                     ],

@@ -6,7 +6,7 @@ import 'important_date.dart';
 import 'important_link.dart';
 
 class Post {
-  String id;
+  int id;
   String type;
   String shortLink;
   String imageLink;
@@ -54,15 +54,15 @@ class Post {
       'title': title,
       'name': name,
       'info': info,
-      'createdDate': createdDate,
-      'updatedDate': updatedDate,
+      'created_date': createdDate,
+      'updated_date': updatedDate,
       'organisation': organisation,
-      'totalVacancy': totalVacancy,
+      'total_vacancy': totalVacancy,
       'dates': dates.map((date) => date.toMap()),
       'links': links.map((link) => link.toMap()),
       'fees': fees.map((fee) => fee.toMap()),
-      'ageLimits': ageLimits.map((ageLimit) => ageLimit.toMap()),
-      'ageLimitAsOn': ageLimitAsOn,
+      'age_limits': ageLimits.map((ageLimit) => ageLimit.toMap()),
+      'age_limit_as_on': ageLimitAsOn,
       'vacancies': vacancies.map((e) => e.toMap()),
       'draft': draft,
     };
@@ -72,20 +72,20 @@ class Post {
     return Post(
       id: map['id'],
       type: map['type'],
-      shortLink: map['shortLink'],
-      imageLink: map['imageLink'],
+      shortLink: map['short_link'],
+      imageLink: map['image_link'],
       title: map['title'],
-      createdDate: map['createdDate'],
-      updatedDate: map['updatedDate'],
+      createdDate: map['created_date'],
+      updatedDate: map['updated_date'],
       name: map['name'],
       info: map['info'],
       organisation: map['organisation'],
-      totalVacancy: map['totalVacancy'],
+      totalVacancy: map['total_vacancy'],
       dates: datesFromMap(map['dates']),
       links: linksFromMap(map['links']),
       fees: feesFromMap(map['fees']),
-      ageLimits: itemsFromMap(map['ageLimits']),
-      ageLimitAsOn: map['ageLimitAsOn'] ?? "",
+      ageLimits: itemsFromMap(map['age_limits']),
+      ageLimitAsOn: map['age_limit_as_on'] ?? "",
       vacancies: vacanciesFromMap(map['vacancies']),
       draft: map['draft'],
     );

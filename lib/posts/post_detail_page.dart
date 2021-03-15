@@ -105,7 +105,9 @@ class _PostDetailPageState extends State<PostDetailPage>
                   icon: Icon(Icons.share),
                   onPressed: () async {
                     analytics.logShare(
-                        contentType: post.type, itemId: post.id, method: null);
+                        contentType: post.type,
+                        itemId: post.id.toString(),
+                        method: null);
                     String url;
                     if (post.shortLink == null) {
                       final parameters = DynamicLinkParameters(

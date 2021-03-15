@@ -10,7 +10,7 @@ String getBaseUrl() {
   if (kReleaseMode) {
     return "https://api.sarkarijobadda.in";
   }
-  return "https://debug.api.sarkarijobadda.in";
+  return "http://localhost:1323";
 }
 
 final String token = "Bearer wA5dZ8J1U4mt7X2LFRy9W8337Sda1eAotmSID8dYHHdUfer3";

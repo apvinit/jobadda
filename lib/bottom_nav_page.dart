@@ -40,11 +40,10 @@ class _BottomNavPageState extends State<BottomNavPage> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard), title: Text('Categories')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.search), title: Text('Search')),
+              icon: Icon(Icons.dashboard), label: 'Categories'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       ),
       body: _widgetOptions.elementAt(_selectedIndex),

@@ -1,5 +1,5 @@
 class PostShortInfo {
-  String id;
+  int id;
   String title;
   String type;
   String updatedDate;
@@ -16,7 +16,7 @@ class PostShortInfo {
       id: map['id'],
       title: map['title'],
       type: map['type'],
-      updatedDate: map['updatedDate'],
+      updatedDate: map['updated_date'],
     );
   }
 
@@ -25,7 +25,7 @@ class PostShortInfo {
       'id': id,
       'title': title,
       'type': type,
-      'updatedDate': updatedDate,
+      'updated_date': updatedDate,
     };
   }
 }

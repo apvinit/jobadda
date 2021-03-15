@@ -12,7 +12,12 @@ class PostSearchDelegate extends SearchDelegate {
   ThemeData appBarTheme(BuildContext context) {
     final theme = Theme.of(context);
     return theme.copyWith(
-      textTheme: theme.primaryTextTheme,
+      textTheme: theme.textTheme.copyWith(
+          headline6: TextStyle(
+        color: Colors.white,
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+      )),
     );
   }
 

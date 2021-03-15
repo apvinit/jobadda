@@ -81,6 +81,8 @@ class _CategoryListPageState extends State<CategoryListPage> {
           if (snapshot.hasData) {
             var posts = snapshot.data;
             delegate = CategoryPostDelegate(posts);
+            if (snapshot.data.length == 0)
+              return Center(child: Text('No posts here.'));
             return ListView.builder(
                 itemCount: posts.length,
                 itemBuilder: (context, index) {

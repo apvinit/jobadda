@@ -42,6 +42,8 @@ class _HomePostListState extends State<HomePostList> {
       future: postsFuture,
       builder: (context, AsyncSnapshot<List<PostShortInfo>> snapshot) {
         if (snapshot.hasData) {
+          if (snapshot.data.length == 0)
+            return Center(child: Text('No posts here.'));
           var posts = snapshot.data;
           return RefreshIndicator(
             key: _refreshKey,
